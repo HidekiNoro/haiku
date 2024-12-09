@@ -1,38 +1,78 @@
-<!DOCTYPE html>
-<html lang="ja">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>俳句の世界</title>
-    <link rel="stylesheet" href="style.css">
-</head>
-<body>
-    <header>
-        <h1>俳句の世界</h1>
-        <p>あなたの心に響く俳句を投稿しましょう</p>
-    </header>
+body {
+    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    background-color: #f7f7f7;
+    color: #333;
+    text-align: center; /* 画面全体を中央寄せ */
+}
 
-    <main>
-        <section id="haiku-form">
-            <h2>俳句を投稿する</h2>
-            <form id="haiku-post-form">
-                <input type="text" id="haiku-input" placeholder="俳句をここに入力してください">
-                <button type="button" id="post-haiku">投稿する</button>
-            </form>
-        </section>
+header {
+    background-color: #6b8e23;
+    color: white;
+    padding: 20px 0;
+}
 
-        <section id="haiku-display">
-            <h2>これまでの俳句</h2>
-            <ul id="haiku-list">
-                <!-- 投稿された俳句がここにリストとして追加されます -->
-            </ul>
-        </section>
-    </main>
+main {
+    padding: 20px;
+    max-width: 800px; /* 中央に配置する幅 */
+    margin: 0 auto; /* 中央揃え */
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 中央揃え */
+}
 
-    <footer>
-        <p>&copy; 2024 俳句の世界</p>
-    </footer>
+#haiku-form {
+    margin: 20px 0;
+}
 
-    <script src="script.js"></script>
-</body>
-</html>
+#haiku-post-form {
+    display: flex;
+    justify-content: center; /* 中央揃え */
+    align-items: center;
+    gap: 10px; /* ボタンと入力欄の間隔 */
+}
+
+#haiku-input {
+    width: 70%; /* 横長に設定 */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #6b8e23;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #556b2f;
+}
+
+#haiku-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+#haiku-list li {
+    background-color: #f0f0f0;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+}
+
+footer {
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+    background-color: #6b8e23;
+    color: white;
+}
