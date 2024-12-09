@@ -1,46 +1,36 @@
-body {
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    margin: 0;
-    padding: 0;
-    line-height: 1.6;
-    background-color: #f7f7f7;
-    color: #333;
-    text-align: center;
-}
+// ページ読み込み時にローカルストレージから俳句を表示
+document.addEventListener("DOMContentLoaded", function () {
+    const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
+    const haikuList = document.getElementById("haiku-list");
 
-header {
-    background-color: #6b8e23;
-    color: white;
-    padding: 20px 0;
-}
+    // 保存されている俳句をリストに追加
+    storedHaikus.forEach((haiku) => {
+        const newHaiku = document.createElement("li");
+        newHaiku.textContent = haiku;
+        haikuList.appendChild(newHaiku);
+    });
+});
 
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-}
+// 俳句を投稿する機能
+document.getElementById("post-haiku").addEventListener("click", function () {
+    const haikuInput = document.getElementById("haiku-input").value.trim();
 
-h1, h2 {
-    font-weight: bold;
-}
+    if (haikuInput) {
+        const haikuList = document.getElementById("haiku-list");
+        const newHaiku = document.createElement("li");
+        newHaiku.textContent = haikuInput;
+        haikuList.appendChild(newHaiku);
 
-#haiku-form {
-    margin: 20px 0;
-}
+        const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
+        storedHaikus.push(haikuInput);
+        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
 
-#haiku-post-form {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 10px;
-}
+        document.getElementById("haiku-input").value = "";
+    } else {
+        alert("俳句を入力してください！");
+    }
+});
 
-#haiku-input {
-    width: 70%; /* 横長に設定 */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
