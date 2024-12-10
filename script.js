@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     const haikuList = document.getElementById("haiku-list");
 
-    storedHaikus.forEach((haikuObj, index) => {
+    storedHaikus.reverse().forEach((haikuObj, index) => {
         addHaikuToList(haikuObj, index, storedHaikus);
     });
 
@@ -19,10 +19,13 @@ document.getElementById("post-haiku").addEventListener("click", function () {
     if (haikuInput) {
         const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
         const newHaiku = { text: haikuInput, date: new Date().toLocaleString(), likes: 0 };
-        storedHaikus.push(newHaiku);
+        storedHaikus.unshift(newHaiku); // 新しい句をリストの先頭に追加
         localStorage.setItem("haikus", JSON.stringify(storedHaikus));
 
-        addHaikuToList(newHaiku, storedHaikus.length - 1, storedHaikus);
+        haikuList.innerHTML = ""; // リストを再描画
+        storedHaikus.forEach((haikuObj, index) => {
+            addHaikuToList(haikuObj, index, storedHaikus);
+        });
 
         document.getElementById("haiku-input").value = "";
     } else {
@@ -33,9 +36,9 @@ document.getElementById("post-haiku").addEventListener("click", function () {
 function addHaikuToList(haikuObj, index, storedHaikus) {
     const haikuList = document.getElementById("haiku-list");
 
-    // 外側の行コンテナ（俳句 + メタ情報を含む）
-    const haikuRow = document.createElement("div");
-    haikuRow.className = "haiku-row";
+    // 外側のコンテナ
+    const haikuContainer = document.createElement("div");
+    haikuContainer.className = "haiku-container";
 
     // 俳句本文（左側）
     const haikuText = document.createElement("div");
@@ -71,18 +74,18 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
         if (password === "mySecret123") {
             storedHaikus.splice(index, 1);
             localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-            haikuList.removeChild(haikuRow);
+            haikuList.removeChild(haikuContainer);
         } else {
             alert("パスワードが間違っています。削除できません。");
         }
     });
 
     // 構造を組み立てる
-    metaContainer.appendChild(haikuDate);
     metaContainer.appendChild(likeButton);
     metaContainer.appendChild(deleteButton);
+    metaContainer.appendChild(haikuDate);
 
-    haikuRow.appendChild(haikuText);
-    haikuRow.appendChild(metaContainer);
-    haikuList.appendChild(haikuRow);
+    haikuContainer.appendChild(haikuText);
+    haikuContainer.appendChild(metaContainer);
+    haikuList.appendChild(haikuContainer);
 }
