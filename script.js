@@ -33,16 +33,16 @@ document.getElementById("post-haiku").addEventListener("click", function () {
 function addHaikuToList(haikuObj, index, storedHaikus) {
     const haikuList = document.getElementById("haiku-list");
 
-    // 外側のコンテナ（俳句）
-    const haikuContainer = document.createElement("div");
-    haikuContainer.className = "haiku-container";
+    // 外側の行コンテナ（俳句 + メタ情報を含む）
+    const haikuRow = document.createElement("div");
+    haikuRow.className = "haiku-row";
 
     // 俳句本文（左側）
     const haikuText = document.createElement("div");
     haikuText.textContent = haikuObj.text;
     haikuText.className = "haiku-text";
 
-    // メタ情報（右側の投稿日時・いいね・削除ボタン）
+    // メタ情報（右側）
     const metaContainer = document.createElement("div");
     metaContainer.className = "meta-container";
 
@@ -82,7 +82,7 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
     metaContainer.appendChild(likeButton);
     metaContainer.appendChild(deleteButton);
 
-    haikuContainer.appendChild(haikuText);
-    haikuList.appendChild(haikuContainer);
-    haikuList.appendChild(metaContainer);
+    haikuRow.appendChild(haikuText);
+    haikuRow.appendChild(metaContainer);
+    haikuList.appendChild(haikuRow);
 }
