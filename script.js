@@ -1,4 +1,3 @@
-// ページ読み込み時にローカルストレージから俳句を表示
 document.addEventListener("DOMContentLoaded", function () {
     const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     const haikuList = document.getElementById("haiku-list");
@@ -48,11 +47,17 @@ function addHaikuToList(haiku, index, storedHaikus) {
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
     deleteButton.className = "delete-btn"; // 削除ボタンにクラスを付与
+    deleteButton.style.display = "none"; // 初期状態で非表示
     deleteButton.addEventListener("click", function () {
-        storedHaikus.splice(index, 1); // 配列から削除
-        localStorage.setItem("haikus", JSON.stringify(storedHaikus)); // ローカルストレージを更新
-        haikuList.removeChild(newHaiku); // リストから削除
-        alert("俳句を削除しました！");
+        const password = prompt("削除するにはパスワードを入力してください:");
+        if (password === "mySecret123") { // あなたの好きなパスワードに変更
+            storedHaikus.splice(index, 1); // 配列から削除
+            localStorage.setItem("haikus", JSON.stringify(storedHaikus)); // ローカルストレージを更新
+            haikuList.removeChild(newHaiku); // リストから削除
+            alert("俳句を削除しました！");
+        } else {
+            alert("パスワードが間違っています。削除できません。");
+        }
     });
 
     newHaiku.appendChild(deleteButton);
