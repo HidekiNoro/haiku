@@ -34,25 +34,22 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
     const haikuList = document.getElementById("haiku-list");
 
     const newHaiku = document.createElement("li");
-    newHaiku.innerHTML = `
-        <div class="haiku-content">
-            <button class="like-btn">いいね ${haikuObj.likes}</button>
-            <span>${haikuObj.text}</span>
-            <span class="haiku-date">${haikuObj.date}</span>
-        </div>
-        <button class="delete-btn">削除</button>
-    `;
 
-    // いいねボタンの動作
-    const likeButton = newHaiku.querySelector(".like-btn");
-    likeButton.addEventListener("click", function () {
-        haikuObj.likes += 1;
-        likeButton.textContent = `いいね ${haikuObj.likes}`;
-        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-    });
+    // 俳句本文
+    const haikuText = document.createElement("p");
+    haikuText.textContent = haikuObj.text;
+    haikuText.className = "haiku-text";
 
-    // 削除ボタンの動作
-    const deleteButton = newHaiku.querySelector(".delete-btn");
+    // 日付
+    const haikuDate = document.createElement("p");
+    haikuDate.textContent = `投稿日時: ${haikuObj.date}`;
+    haikuDate.className = "haiku-date";
+
+    // 削除ボタン
+    const deleteButton = document.createElement("button");
+    deleteButton.textContent = "削除";
+    deleteButton.className = "delete-btn";
+    deleteButton.style.display = "none";
     deleteButton.addEventListener("click", function () {
         const password = prompt("削除するにはパスワードを入力してください:");
         if (password === "mySecret123") {
@@ -64,5 +61,20 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
         }
     });
 
+    // いいねボタン
+    const likeButton = document.createElement("button");
+    likeButton.textContent = `いいね ${haikuObj.likes}`;
+    likeButton.className = "like-btn";
+    likeButton.addEventListener("click", function () {
+        haikuObj.likes += 1;
+        likeButton.textContent = `いいね ${haikuObj.likes}`;
+        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
+    });
+
+    // 構造を組み立てる
+    newHaiku.appendChild(haikuText);
+    newHaiku.appendChild(haikuDate);
+    newHaiku.appendChild(likeButton);
+    newHaiku.appendChild(deleteButton);
     haikuList.appendChild(newHaiku);
 }
