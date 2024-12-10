@@ -66,25 +66,32 @@ button:hover {
     padding: 0;
 }
 
-/* 俳句のコンテナ（左側） */
-.haiku-container {
-    background-color: #f0f0f0;
+/* 行全体を横並びにするコンテナ */
+.haiku-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     margin: 15px 0;
-    padding: 15px;
+    padding: 10px;
+    background-color: #f0f0f0;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    text-align: left;
 }
 
-/* メタ情報（右側） */
+/* 俳句テキスト */
+.haiku-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    flex: 1;
+    text-align: left;
+    padding-right: 15px;
+}
+
+/* メタ情報（右側のボタンと日付） */
 .meta-container {
     display: flex;
-    flex-direction: column;
-    align-items: flex-end;
+    align-items: center;
     gap: 10px;
-    margin: 15px 0 15px 15px;
-    padding: 10px;
-    border-left: 2px solid #ccc;
 }
 
 /* 日付 */
@@ -130,4 +137,15 @@ button:hover {
     left: 10px;
     padding: 5px 10px;
     background-color: #6b8e23;
-    color: whit
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#toggle-delete:hover {
+    opacity: 1;
+    background-color: #556b2f;
+}
