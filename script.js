@@ -78,11 +78,11 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
     });
 
     // 構造を組み立てる
+    haikuContainer.appendChild(haikuText);
+    haikuList.appendChild(haikuContainer);
+
     metaContainer.appendChild(haikuDate);
     metaContainer.appendChild(likeButton);
     metaContainer.appendChild(deleteButton);
-
-    haikuContainer.appendChild(haikuText);
-    haikuContainer.appendChild(metaContainer);
-    haikuList.appendChild(haikuContainer);
+    haikuList.appendChild(metaContainer);
 }
