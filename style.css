@@ -87,11 +87,9 @@ button:hover {
     cursor: pointer;
     font-size: 12px;
     padding: 5px 10px;
-    opacity: 0.6; /* 半透明で目立たない */
 }
 
 .delete-btn:hover {
-    opacity: 1; /* ホバー時に透明度をなくす */
     background-color: #c9302c; /* 濃い赤色 */
 }
 
