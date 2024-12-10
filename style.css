@@ -66,13 +66,13 @@ button:hover {
     padding: 0;
 }
 
-/* 行全体を横並びにするコンテナ */
-.haiku-row {
+/* 俳句のコンテナ */
+.haiku-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin: 15px 0;
-    padding: 10px;
+    padding: 15px;
     background-color: #f0f0f0;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -84,12 +84,12 @@ button:hover {
     font-weight: bold;
     flex: 1;
     text-align: left;
-    padding-right: 15px;
 }
 
-/* メタ情報（右側のボタンと日付） */
+/* メタ情報（右側） */
 .meta-container {
     display: flex;
+    justify-content: flex-end;
     align-items: center;
     gap: 10px;
 }
