@@ -10,11 +10,8 @@ document.addEventListener("DOMContentLoaded", function () {
     // 削除ボタンの表示/非表示を切り替える
     document.getElementById("toggle-delete").addEventListener("click", function () {
         document.querySelectorAll(".delete-btn").forEach((button) => {
-            if (button.style.display === "none") {
-                button.style.display = "inline-block";
-            } else {
-                button.style.display = "none";
-            }
+            button.style.display =
+                button.style.display === "none" ? "inline-block" : "none";
         });
     });
 });
@@ -46,8 +43,8 @@ function addHaikuToList(haiku, index, storedHaikus) {
     // 削除ボタンを作成（デフォルトで非表示）
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
-    deleteButton.className = "delete-btn"; // 削除ボタンにクラスを付与
-    deleteButton.style.display = "none"; // 初期状態で非表示
+    deleteButton.className = "delete-btn";
+    deleteButton.style.display = "none";
     deleteButton.addEventListener("click", function () {
         const password = prompt("削除するにはパスワードを入力してください:");
         if (password === "mySecret123") { // パスワードを設定
