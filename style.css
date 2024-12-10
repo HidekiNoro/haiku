@@ -73,9 +73,6 @@ button:hover {
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 
 /* 俳句のテキスト */
@@ -87,8 +84,13 @@ button:hover {
 /* メタ情報（日時・いいね・削除ボタン） */
 .haiku-meta {
     display: flex;
+    justify-content: flex-start;
     gap: 10px;
     align-items: center;
+    margin-top: 10px;
+    font-size: 0.9rem;
+    color: gray;
+    padding-left: 15px;
 }
 
 /* 日付 */
