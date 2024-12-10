@@ -1,3 +1,4 @@
+/* 基本のスタイル */
 body {
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
     margin: 0;
@@ -76,8 +77,9 @@ button:hover {
     align-items: center;
 }
 
+/* 削除ボタン */
 #haiku-list li button {
-    background-color: #d9534f; /* 赤色 */
+    background-color: #d9534f;
     padding: 5px 10px;
     color: white;
     border: none;
@@ -85,14 +87,7 @@ button:hover {
     cursor: pointer;
 }
 
-#haiku-list li button:hover {
-    background-color: #c9302c;
-}
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
-    background-color: #6b8e23;
-    color: white;
+/* 削除ボタンの非表示 */
+.delete-btn {
+    display: none;
 }
