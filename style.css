@@ -66,9 +66,10 @@ button:hover {
     padding: 0;
 }
 
-#haiku-list li {
+/* 俳句コンテナ */
+.haiku-container {
     background-color: #f0f0f0;
-    margin: 10px 0;
+    margin: 15px 0;
     padding: 15px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
@@ -79,14 +80,17 @@ button:hover {
 .haiku-text {
     font-size: 1.2rem;
     font-weight: bold;
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
-/* 日付 */
-.haiku-date {
+/* メタ情報（日時・いいね・削除ボタン） */
+.haiku-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
     font-size: 0.9rem;
     color: gray;
-    margin-bottom: 10px;
 }
 
 /* いいねボタン */
