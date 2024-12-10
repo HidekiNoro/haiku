@@ -7,6 +7,17 @@ document.addEventListener("DOMContentLoaded", function () {
     storedHaikus.forEach((haiku, index) => {
         addHaikuToList(haiku, index, storedHaikus);
     });
+
+    // 削除ボタンの表示/非表示を切り替える
+    document.getElementById("toggle-delete").addEventListener("click", function () {
+        document.querySelectorAll(".delete-btn").forEach((button) => {
+            if (button.style.display === "none") {
+                button.style.display = "inline-block";
+            } else {
+                button.style.display = "none";
+            }
+        });
+    });
 });
 
 // 俳句を投稿する機能
@@ -33,16 +44,18 @@ function addHaikuToList(haiku, index, storedHaikus) {
     const newHaiku = document.createElement("li");
     newHaiku.textContent = haiku;
 
-    // 削除ボタンを作成
+    // 削除ボタンを作成（デフォルトで非表示）
     const deleteButton = document.createElement("button");
     deleteButton.textContent = "削除";
-    deleteButton.style.marginLeft = "10px";
+    deleteButton.className = "delete-btn"; // 削除ボタンにクラスを付与
     deleteButton.addEventListener("click", function () {
         storedHaikus.splice(index, 1); // 配列から削除
         localStorage.setItem("haikus", JSON.stringify(storedHaikus)); // ローカルストレージを更新
         haikuList.removeChild(newHaiku); // リストから削除
+        alert("俳句を削除しました！");
     });
 
     newHaiku.appendChild(deleteButton);
     haikuList.appendChild(newHaiku);
 }
+
