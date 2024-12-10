@@ -2,8 +2,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     const haikuList = document.getElementById("haiku-list");
 
-    storedHaikus.reverse().forEach((haikuObj, index) => {
-        addHaikuToList(haikuObj, index, storedHaikus);
+    storedHaikus.forEach((haikuObj, index) => {
+        addHaikuToList(haikuObj, index, storedHaikus, false);
     });
 
     document.getElementById("toggle-delete").addEventListener("click", function () {
@@ -22,10 +22,7 @@ document.getElementById("post-haiku").addEventListener("click", function () {
         storedHaikus.unshift(newHaiku); // 新しい句をリストの先頭に追加
         localStorage.setItem("haikus", JSON.stringify(storedHaikus));
 
-        haikuList.innerHTML = ""; // リストを再描画
-        storedHaikus.forEach((haikuObj, index) => {
-            addHaikuToList(haikuObj, index, storedHaikus);
-        });
+        addHaikuToList(newHaiku, 0, storedHaikus, true); // 新しい句を直接上に追加
 
         document.getElementById("haiku-input").value = "";
     } else {
@@ -33,7 +30,7 @@ document.getElementById("post-haiku").addEventListener("click", function () {
     }
 });
 
-function addHaikuToList(haikuObj, index, storedHaikus) {
+function addHaikuToList(haikuObj, index, storedHaikus, prepend) {
     const haikuList = document.getElementById("haiku-list");
 
     // 外側のコンテナ
@@ -87,5 +84,11 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
 
     haikuContainer.appendChild(haikuText);
     haikuContainer.appendChild(metaContainer);
-    haikuList.appendChild(haikuContainer);
+
+    // 新しい句はリストの上に追加
+    if (prepend) {
+        haikuList.prepend(haikuContainer);
+    } else {
+        haikuList.appendChild(haikuContainer);
+    }
 }
