@@ -58,4 +58,3 @@ function addHaikuToList(haiku, index, storedHaikus) {
     newHaiku.appendChild(deleteButton);
     haikuList.appendChild(newHaiku);
 }
-
