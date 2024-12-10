@@ -80,22 +80,39 @@ button:hover {
 /* 削除ボタンのデザイン */
 .delete-btn {
     display: none; /* 初期状態で非表示 */
-    position: fixed; /* 画面の固定位置に配置 */
-    bottom: 10px; /* 画面下から10pxの位置 */
-    left: 10px; /* 画面左から10pxの位置 */
-    padding: 5px 10px;
     background-color: #d9534f; /* 赤色 */
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px; /* 小さめの文字サイズ */
-    opacity: 0.6; /* 半透明で目立たないように */
+    font-size: 12px;
+    padding: 5px 10px;
+    opacity: 0.6; /* 半透明で目立たない */
 }
 
 .delete-btn:hover {
     opacity: 1; /* ホバー時に透明度をなくす */
     background-color: #c9302c; /* 濃い赤色 */
+}
+
+/* 削除ボタンの表示/非表示を切り替えるトグルボタン */
+#toggle-delete {
+    position: fixed; /* 画面に固定配置 */
+    bottom: 10px; /* 画面下から10px */
+    left: 10px; /* 画面左から10px */
+    padding: 5px 10px;
+    background-color: #6b8e23; /* 緑色 */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px; /* 小さめの文字サイズ */
+    cursor: pointer;
+    opacity: 0.6; /* 半透明で控えめに */
+}
+
+#toggle-delete:hover {
+    opacity: 1; /* ホバー時に透明度をなくす */
+    background-color: #556b2f;
 }
 
 footer {
