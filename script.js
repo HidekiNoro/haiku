@@ -50,7 +50,7 @@ function addHaikuToList(haiku, index, storedHaikus) {
     deleteButton.style.display = "none"; // 初期状態で非表示
     deleteButton.addEventListener("click", function () {
         const password = prompt("削除するにはパスワードを入力してください:");
-        if (password === "mySecret123") { // あなたの好きなパスワードに変更
+        if (password === "mySecret123") { // パスワードを設定
             storedHaikus.splice(index, 1); // 配列から削除
             localStorage.setItem("haikus", JSON.stringify(storedHaikus)); // ローカルストレージを更新
             haikuList.removeChild(newHaiku); // リストから削除
