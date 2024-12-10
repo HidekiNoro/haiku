@@ -42,10 +42,24 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
     haikuText.textContent = haikuObj.text;
     haikuText.className = "haiku-text";
 
+    // 右横に配置するボタンと日付のコンテナ
+    const metaContainer = document.createElement("div");
+    metaContainer.className = "haiku-meta";
+
     // 日付
-    const haikuDate = document.createElement("p");
-    haikuDate.textContent = `投稿日時: ${haikuObj.date}`;
+    const haikuDate = document.createElement("span");
+    haikuDate.textContent = haikuObj.date;
     haikuDate.className = "haiku-date";
+
+    // いいねボタン
+    const likeButton = document.createElement("button");
+    likeButton.textContent = `いいね ${haikuObj.likes}`;
+    likeButton.className = "like-btn";
+    likeButton.addEventListener("click", function () {
+        haikuObj.likes += 1;
+        likeButton.textContent = `いいね ${haikuObj.likes}`;
+        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
+    });
 
     // 削除ボタン
     const deleteButton = document.createElement("button");
@@ -63,19 +77,7 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
         }
     });
 
-    // いいねボタン
-    const likeButton = document.createElement("button");
-    likeButton.textContent = `いいね ${haikuObj.likes}`;
-    likeButton.className = "like-btn";
-    likeButton.addEventListener("click", function () {
-        haikuObj.likes += 1;
-        likeButton.textContent = `いいね ${haikuObj.likes}`;
-        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-    });
-
     // 構造を組み立てる
-    const metaContainer = document.createElement("div");
-    metaContainer.className = "haiku-meta";
     metaContainer.appendChild(haikuDate);
     metaContainer.appendChild(likeButton);
     metaContainer.appendChild(deleteButton);
