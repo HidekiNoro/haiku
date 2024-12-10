@@ -77,46 +77,66 @@ button:hover {
     align-items: center;
 }
 
-/* 削除ボタンのデザイン */
-.delete-btn {
-    display: none; /* 初期状態で非表示 */
-    background-color: #d9534f; /* 赤色 */
+.haiku-content {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
+/* いいねボタン */
+.like-btn {
+    background-color: #6b8e23;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 12px;
+    font-size: 14px;
     padding: 5px 10px;
+    margin-right: 10px;
 }
 
-.delete-btn:hover {
-    background-color: #c9302c; /* 濃い赤色 */
-}
-
-/* 削除ボタンの表示/非表示を切り替えるトグルボタン */
-#toggle-delete {
-    position: fixed; /* 画面に固定配置 */
-    bottom: 10px; /* 画面下から10px */
-    left: 10px; /* 画面左から10px */
-    padding: 5px 10px;
-    background-color: #6b8e23; /* 緑色 */
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 10px; /* 小さめの文字サイズ */
-    cursor: pointer;
-    opacity: 0.6; /* 半透明で控えめに */
-}
-
-#toggle-delete:hover {
-    opacity: 1; /* ホバー時に透明度をなくす */
+.like-btn:hover {
     background-color: #556b2f;
 }
 
-footer {
-    text-align: center;
-    padding: 10px 0;
-    margin-top: 20px;
+/* 日付表示 */
+.haiku-date {
+    font-size: 12px;
+    color: gray;
+    margin-left: 10px;
+}
+
+/* 削除ボタン */
+.delete-btn {
+    display: none;
+    background-color: #d9534f;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    padding: 5px 10px;
+    font-size: 12px;
+}
+
+.delete-btn:hover {
+    background-color: #c9302c;
+}
+
+#toggle-delete {
+    position: fixed;
+    bottom: 10px;
+    left: 10px;
+    padding: 5px 10px;
     background-color: #6b8e23;
     color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 10px;
+    cursor: pointer;
+    opacity: 0.6;
+}
+
+#toggle-delete:hover {
+    opacity: 1;
+    background-color: #556b2f;
 }
