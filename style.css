@@ -1,4 +1,4 @@
-   /* 基本のスタイル */
+/* 基本のスタイル */
 body {
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
     margin: 0;
@@ -66,23 +66,13 @@ button:hover {
     padding: 0;
 }
 
-/* 俳句の横並びの行 */
-.haiku-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
-    padding: 10px;
+/* 俳句のコンテナ（左側） */
+.haiku-container {
     background-color: #f0f0f0;
+    margin: 15px 0;
+    padding: 15px;
     border-radius: 5px;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
-/* 俳句テキスト */
-.haiku-text {
-    font-size: 1.2rem;
-    font-weight: bold;
-    flex: 1;
     text-align: left;
 }
 
@@ -90,8 +80,11 @@ button:hover {
 .meta-container {
     display: flex;
     flex-direction: column;
-    gap: 5px;
     align-items: flex-end;
+    gap: 10px;
+    margin: 15px 0 15px 15px;
+    padding: 10px;
+    border-left: 2px solid #ccc;
 }
 
 /* 日付 */
@@ -137,15 +130,4 @@ button:hover {
     left: 10px;
     padding: 5px 10px;
     background-color: #6b8e23;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 10px;
-    cursor: pointer;
-    opacity: 0.6;
-}
-
-#toggle-delete:hover {
-    opacity: 1;
-    background-color: #556b2f;
-}
+    color: whit
