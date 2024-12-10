@@ -33,18 +33,18 @@ document.getElementById("post-haiku").addEventListener("click", function () {
 function addHaikuToList(haikuObj, index, storedHaikus) {
     const haikuList = document.getElementById("haiku-list");
 
-    // 外側のコンテナ
-    const haikuContainer = document.createElement("div");
-    haikuContainer.className = "haiku-container";
+    // 外側のコンテナ（俳句 + メタ情報を含む）
+    const haikuRow = document.createElement("div");
+    haikuRow.className = "haiku-row";
 
-    // 俳句本文
-    const haikuText = document.createElement("p");
+    // 俳句本文（左側）
+    const haikuText = document.createElement("div");
     haikuText.textContent = haikuObj.text;
     haikuText.className = "haiku-text";
 
-    // 右横に配置するボタンと日付のコンテナ
+    // メタ情報（右側の投稿日時・いいね・削除ボタン）
     const metaContainer = document.createElement("div");
-    metaContainer.className = "haiku-meta";
+    metaContainer.className = "meta-container";
 
     // 日付
     const haikuDate = document.createElement("span");
@@ -71,18 +71,18 @@ function addHaikuToList(haikuObj, index, storedHaikus) {
         if (password === "mySecret123") {
             storedHaikus.splice(index, 1);
             localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-            haikuList.removeChild(haikuContainer);
+            haikuList.removeChild(haikuRow);
         } else {
             alert("パスワードが間違っています。削除できません。");
         }
     });
 
     // 構造を組み立てる
-    haikuContainer.appendChild(haikuText);
-    haikuList.appendChild(haikuContainer);
-
     metaContainer.appendChild(haikuDate);
     metaContainer.appendChild(likeButton);
     metaContainer.appendChild(deleteButton);
-    haikuList.appendChild(metaContainer);
+
+    haikuRow.appendChild(haikuText);
+    haikuRow.appendChild(metaContainer);
+    haikuList.appendChild(haikuRow);
 }
