@@ -3,44 +3,45 @@ document.addEventListener("DOMContentLoaded", function () {
     const haikuList = document.getElementById("haiku-list");
 
     storedHaikus.forEach((haikuObj, index) => {
-        addHaikuToList(haikuObj, index, storedHaikus, false);
+        addHaikuToList(haikuObj, index, storedHaikus);
     });
 
-    document.getElementById("toggle-delete").addEventListener("click", function () {
-        document.querySelectorAll(".delete-btn").forEach((button) => {
-            button.style.display =
-                button.style.display === "none" ? "inline-block" : "none";
-        });
+    document.getElementById("post-haiku").addEventListener("click", function () {
+        const haikuInput = document.getElementById("haiku-input").value.trim();
+        const nameInput = document.getElementById("name-input").value.trim();
+
+        if (haikuInput && nameInput) {
+            const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
+            const newHaiku = { text: haikuInput, name: nameInput, date: new Date().toLocaleString(), likes: 0 };
+            storedHaikus.unshift(newHaiku); // 新しい句をリストの先頭に追加
+            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
+
+            addHaikuToList(newHaiku, 0, storedHaikus);
+
+            document.getElementById("haiku-input").value = "";
+            document.getElementById("name-input").value = "";
+        } else {
+            alert("俳句と名前を入力してください！");
+        }
     });
 });
 
-document.getElementById("post-haiku").addEventListener("click", function () {
-    const haikuInput = document.getElementById("haiku-input").value.trim();
-    if (haikuInput) {
-        const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
-        const newHaiku = { text: haikuInput, date: new Date().toLocaleString(), likes: 0 };
-        storedHaikus.unshift(newHaiku); // 新しい句をリストの先頭に追加
-        localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-
-        addHaikuToList(newHaiku, 0, storedHaikus, true); // 新しい句を直接上に追加
-
-        document.getElementById("haiku-input").value = "";
-    } else {
-        alert("俳句を入力してください！");
-    }
-});
-
-function addHaikuToList(haikuObj, index, storedHaikus, prepend) {
+function addHaikuToList(haikuObj, index, storedHaikus) {
     const haikuList = document.getElementById("haiku-list");
 
     // 外側のコンテナ
     const haikuContainer = document.createElement("div");
     haikuContainer.className = "haiku-container";
 
-    // 俳句本文（左側）
+    // 俳句本文
     const haikuText = document.createElement("div");
     haikuText.textContent = haikuObj.text;
     haikuText.className = "haiku-text";
+
+    // 投稿者名
+    const haikuAuthor = document.createElement("div");
+    haikuAuthor.textContent = `投稿者: ${haikuObj.name}`;
+    haikuAuthor.className = "haiku-author";
 
     // メタ情報（右側）
     const metaContainer = document.createElement("div");
@@ -83,12 +84,7 @@ function addHaikuToList(haikuObj, index, storedHaikus, prepend) {
     metaContainer.appendChild(haikuDate);
 
     haikuContainer.appendChild(haikuText);
+    haikuContainer.appendChild(haikuAuthor);
     haikuContainer.appendChild(metaContainer);
-
-    // 新しい句はリストの上に追加
-    if (prepend) {
-        haikuList.prepend(haikuContainer);
-    } else {
-        haikuList.appendChild(haikuContainer);
-    }
+    haikuList.prepend(haikuContainer);
 }
