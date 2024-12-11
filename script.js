@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     const haikuList = document.getElementById("haiku-list");
+    const toggleDeleteButton = document.getElementById("toggle-delete");
 
     storedHaikus.forEach(addHaikuToList);
 
@@ -27,12 +28,19 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 
+    toggleDeleteButton.addEventListener("click", function () {
+        const deleteButtons = document.querySelectorAll(".delete-btn");
+        deleteButtons.forEach((btn) => {
+            btn.style.display = btn.style.display === "none" ? "block" : "none";
+        });
+    });
+
     function addHaikuToList(haiku) {
         const haikuContainer = document.createElement("div");
         haikuContainer.className = "haiku-container";
 
         const haikuText = document.createElement("div");
-        haikuText.textContent = haiku.text;
+        haikuText.textContent = `${haiku.text} - 投稿者: ${haiku.name}`;
         haikuText.className = "haiku-text";
 
         const metaContainer = document.createElement("div");
