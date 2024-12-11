@@ -46,14 +46,14 @@ header p {
 }
 
 #sidebar-image {
-    width: 100%;              /* 幅を親要素に合わせる */
-    max-width: 300px;         /* 最大幅を設定 */
-    border-radius: 8px;       /* 角を丸める */
-    margin-bottom: 10px;      /* 画像下の余白 */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+    width: 100%;
+    max-width: 300px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
 
-.author-name {
+#author-fixed {
     font-size: 1.5rem;
     color: #333;
     font-weight: bold;
@@ -66,10 +66,6 @@ header p {
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#main-content h2 {
-    margin-bottom: 20px;
 }
 
 #haiku-post-form {
@@ -98,7 +94,6 @@ header p {
     background-color: #556b2f;
 }
 
-/* 俳句リスト */
 #haiku-list {
     list-style: none;
     padding: 0;
@@ -123,13 +118,6 @@ header p {
     text-align: left;
 }
 
-.haiku-author {
-    font-size: 0.9rem;
-    color: #555;
-    margin-top: 5px;
-    text-align: left;
-}
-
 .meta-container {
     display: flex;
     justify-content: flex-end;
@@ -142,50 +130,32 @@ header p {
     color: gray;
 }
 
-.like-btn {
+.like-btn, .delete-btn {
     background-color: #6b8e23;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    font-size: 14px;
     padding: 5px 10px;
-}
-
-.like-btn:hover {
-    background-color: #556b2f;
+    font-size: 14px;
 }
 
 .delete-btn {
-    display: none;
     background-color: #d9534f;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 12px;
 }
 
 .delete-btn:hover {
     background-color: #c9302c;
 }
 
-#toggle-delete {
+footer {
     position: fixed;
     bottom: 10px;
-    left: 10px;
-    padding: 5px 10px;
+    right: 10px;
+    font-size: 0.9rem;
     background-color: #6b8e23;
     color: white;
-    border: none;
+    padding: 5px 10px;
     border-radius: 5px;
-    font-size: 10px;
-    cursor: pointer;
-    opacity: 0.6;
-}
-
-#toggle-delete:hover {
-    opacity: 1;
-    background-color: #556b2f;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
