@@ -6,49 +6,86 @@ body {
     line-height: 1.6;
     background-color: #f7f7f7;
     color: #333;
-    text-align: center;
 }
 
+/* ヘッダー */
 header {
+    text-align: center;
     background-color: #6b8e23;
     color: white;
     padding: 20px 0;
 }
 
-main {
-    padding: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
+header h1 {
+    margin: 0;
+    font-size: 2.5rem;
 }
 
-h1, h2 {
+header p {
+    margin: 5px 0 0;
+    font-size: 1.2rem;
+}
+
+/* コンテンツラッパー */
+#content-wrapper {
+    display: flex;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    gap: 20px;
+}
+
+/* サイドバー（左側） */
+#sidebar {
+    width: 25%;
+    text-align: center;
+    background-color: #e8f5e9;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#sidebar-image {
+    width: 100%;              /* 幅を親要素に合わせる */
+    max-width: 300px;         /* 最大幅を設定 */
+    border-radius: 8px;       /* 角を丸める */
+    margin-bottom: 10px;      /* 画像下の余白 */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* 影を追加 */
+}
+
+.author-name {
+    font-size: 1.5rem;
+    color: #333;
     font-weight: bold;
 }
 
-#haiku-form {
-    margin: 20px 0;
+/* メインコンテンツ（右側） */
+#main-content {
+    width: 75%;
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+#main-content h2 {
+    margin-bottom: 20px;
 }
 
 #haiku-post-form {
     display: flex;
-    justify-content: center;
-    align-items: center;
     gap: 10px;
 }
 
-#haiku-input {
-    width: 70%;
+#haiku-input, #name-input {
+    flex: 1;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     font-size: 1rem;
 }
 
-button {
+#post-haiku {
     padding: 10px 20px;
     background-color: #6b8e23;
     color: white;
@@ -57,16 +94,17 @@ button {
     cursor: pointer;
 }
 
-button:hover {
+#post-haiku:hover {
     background-color: #556b2f;
 }
 
+/* 俳句リスト */
 #haiku-list {
-    list-style-type: none;
+    list-style: none;
     padding: 0;
+    margin-top: 20px;
 }
 
-/* 俳句のコンテナ */
 .haiku-container {
     display: flex;
     justify-content: space-between;
@@ -78,7 +116,6 @@ button:hover {
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
 }
 
-/* 俳句テキスト */
 .haiku-text {
     font-size: 1.2rem;
     font-weight: bold;
@@ -86,7 +123,13 @@ button:hover {
     text-align: left;
 }
 
-/* メタ情報（右側） */
+.haiku-author {
+    font-size: 0.9rem;
+    color: #555;
+    margin-top: 5px;
+    text-align: left;
+}
+
 .meta-container {
     display: flex;
     justify-content: flex-end;
@@ -94,13 +137,11 @@ button:hover {
     gap: 10px;
 }
 
-/* 日付 */
 .haiku-date {
     font-size: 0.9rem;
     color: gray;
 }
 
-/* いいねボタン */
 .like-btn {
     background-color: #6b8e23;
     color: white;
@@ -115,7 +156,6 @@ button:hover {
     background-color: #556b2f;
 }
 
-/* 削除ボタン */
 .delete-btn {
     display: none;
     background-color: #d9534f;
