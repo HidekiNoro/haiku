@@ -63,10 +63,15 @@ document.addEventListener("DOMContentLoaded", function () {
         deleteButton.textContent = "削除";
         deleteButton.className = "delete-btn";
         deleteButton.addEventListener("click", function () {
-            const index = storedHaikus.indexOf(haiku);
-            storedHaikus.splice(index, 1);
-            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-            haikuList.removeChild(haikuContainer);
+            const password = prompt("削除するにはパスワードを入力してください:");
+            if (password === "mySecret123") {
+                const index = storedHaikus.indexOf(haiku);
+                storedHaikus.splice(index, 1);
+                localStorage.setItem("haikus", JSON.stringify(storedHaikus));
+                haikuList.removeChild(haikuContainer);
+            } else {
+                alert("パスワードが間違っています。削除できません。");
+            }
         });
 
         metaContainer.appendChild(haikuDate);
