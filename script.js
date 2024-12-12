@@ -73,7 +73,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 storedHaikus.splice(index, 1);
                 localStorage.setItem("haikus", JSON.stringify(storedHaikus));
                 haikuList.removeChild(haikuContainer);
-            } else {
+            } else if (password !== null) {
                 alert("パスワードが間違っています。削除できません。");
             }
         });
