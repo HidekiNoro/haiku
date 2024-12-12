@@ -1,91 +1,36 @@
-document.addEventListener("DOMContentLoaded", function () {
-    const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
-    const haikuList = document.getElementById("haiku-list");
-    const toggleDeleteButton = document.getElementById("toggle-delete");
+document.getElementById('haiku-form').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-    storedHaikus.forEach(addHaikuToList);
+    const haikuInput = document.getElementById('haiku-input');
+    const authorInput = document.getElementById('author-input');
+    const haikuList = document.getElementById('haiku-list');
 
-    document.getElementById("post-haiku").addEventListener("click", function () {
-        const haikuInput = document.getElementById("haiku-input").value.trim();
-        const nameInput = document.getElementById("name-input").value.trim();
+    const haiku = haikuInput.value;
+    const author = authorInput.value || "匿名";
+    const date = new Date().toISOString().split('T')[0]; // 日付だけを取得
 
-        if (haikuInput && nameInput) {
-            const newHaiku = {
-                text: haikuInput,
-                name: nameInput,
-                date: new Date().toLocaleString(),
-                likes: 0,
-            };
+    const li = document.createElement('li');
+    li.innerHTML = `
+        <span>${haiku}</span>
+        <span>${date} | ${author}</span>
+        <button class="delete-btn">削除</button>
+    `;
 
-            storedHaikus.unshift(newHaiku);
-            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-
-            addHaikuToList(newHaiku);
-            document.getElementById("haiku-input").value = "";
-            document.getElementById("name-input").value = "";
-        } else {
-            alert("俳句と名前を入力してください！");
-        }
-    });
-
-    toggleDeleteButton.addEventListener("click", function () {
-        const deleteButtons = document.querySelectorAll(".delete-btn");
-        deleteButtons.forEach((btn) => {
-            btn.style.display = btn.style.display === "none" ? "block" : "none";
-        });
-    });
-
-    function addHaikuToList(haiku) {
-        const haikuContainer = document.createElement("div");
-        haikuContainer.className = "haiku-container";
-
-        const haikuText = document.createElement("div");
-        haikuText.textContent = haiku.text;
-        haikuText.className = "haiku-text";
-
-        const haikuAuthor = document.createElement("div");
-        haikuAuthor.textContent = `投稿者: ${haiku.name}`;
-        haikuAuthor.className = "haiku-author";
-
-        const metaContainer = document.createElement("div");
-        metaContainer.className = "meta-container";
-
-        const haikuDate = document.createElement("span");
-        haikuDate.textContent = haiku.date;
-        haikuDate.className = "haiku-date";
-
-        const likeButton = document.createElement("button");
-        likeButton.textContent = `いいね ${haiku.likes}`;
-        likeButton.className = "like-btn";
-        likeButton.addEventListener("click", function () {
-            haiku.likes += 1;
-            likeButton.textContent = `いいね ${haiku.likes}`;
-            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-        });
-
-        const deleteButton = document.createElement("button");
-        deleteButton.textContent = "削除";
-        deleteButton.className = "delete-btn";
-        deleteButton.addEventListener("click", function () {
-            const password = prompt("削除するにはパスワードを入力してください:");
-            if (password === "mySecret123") {
-                const index = storedHaikus.indexOf(haiku);
-                storedHaikus.splice(index, 1);
-                localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-                haikuList.removeChild(haikuContainer);
-            } else if (password !== null) {
-                alert("パスワードが間違っています。削除できません。");
+    const deleteButton = li.querySelector('.delete-btn');
+    deleteButton.addEventListener('click', function() {
+        li.classList.add('blue'); // 青色に変更
+        setTimeout(() => {
+            if (confirm("この句を削除しますか？")) {
+                li.remove();
+            } else {
+                li.classList.remove('blue'); // 青色を戻す
             }
-        });
+        }, 300);
+    });
 
-        metaContainer.appendChild(haikuDate);
-        metaContainer.appendChild(likeButton);
-        metaContainer.appendChild(deleteButton);
+    haikuList.prepend(li); // 新しい句を上に追加
 
-        haikuContainer.appendChild(haikuText);
-        haikuContainer.appendChild(haikuAuthor);
-        haikuContainer.appendChild(metaContainer);
-
-        haikuList.prepend(haikuContainer);
-    }
+    // フォームをリセット
+    haikuInput.value = '';
+    authorInput.value = '';
 });
