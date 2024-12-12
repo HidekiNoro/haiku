@@ -33,6 +33,19 @@ header p {
     margin: 0 auto;
     padding: 20px;
     gap: 20px;
+    flex-wrap: wrap; /* 画面幅に応じて折り返す */
+}
+
+.haiku-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 15px 0;
+    padding: 15px;
+    background-color: #f0f0f0;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    flex-wrap: wrap; /* 要素を折り返し可能に */
 }
 
 /* サイドバー（左側） */
@@ -94,24 +107,7 @@ header p {
     background-color: #556b2f;
 }
 
-/* 俳句リスト */
-#haiku-list {
-    list-style: none;
-    padding: 0;
-    margin-top: 20px;
-}
-
-.haiku-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
-    padding: 15px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-}
-
+/* 各俳句のスタイル */
 .haiku-text {
     font-size: 1.2rem;
     font-weight: bold;
@@ -149,7 +145,7 @@ header p {
 
 .delete-btn {
     background-color: #d9534f;
-    display: none;
+    display: none; /* デフォルトで非表示 */
 }
 
 .delete-btn:hover {
@@ -180,4 +176,39 @@ footer {
     font-size: 0.9rem;
     text-align: center;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* スマートフォン向けのレスポンシブデザイン */
+@media screen and (max-width: 768px) {
+    #content-wrapper {
+        flex-direction: column; /* コンテンツを縦並びに */
+        gap: 10px;
+    }
+
+    .haiku-container {
+        flex-direction: column; /* 各俳句要素を縦並びに */
+        align-items: flex-start; /* 左寄せ */
+    }
+
+    .meta-container {
+        display: flex;
+        justify-content: flex-start;
+        gap: 10px;
+    }
+
+    #sidebar {
+        width: 100%; /* サイドバーを画面幅いっぱいに */
+        text-align: center;
+    }
+
+    #main-content {
+        width: 100%; /* メインコンテンツも画面幅いっぱいに */
+    }
+
+    footer {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        text-align: center;
+    }
 }
