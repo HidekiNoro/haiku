@@ -54,9 +54,20 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     display: flex;
-    align-items: center;
     justify-content: space-between;
+    align-items: center;
     transition: background-color 0.3s;
+}
+
+#haiku-list li span {
+    flex: 1;
+    text-align: left;
+}
+
+#haiku-list li span:last-child {
+    text-align: right;
+    color: #555;
+    font-size: 0.9em;
 }
 
 #haiku-list li.blue {
@@ -97,6 +108,7 @@ footer {
 img#landscape-image {
     max-width: 100%;
     height: auto;
-    margin-top: 20px;
-    display: block;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
