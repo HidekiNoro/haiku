@@ -20,9 +20,11 @@ document.getElementById('haiku-form').addEventListener('submit', function(event)
     deleteButton.addEventListener('click', function() {
         li.classList.add('blue'); // 青色に変更
         setTimeout(() => {
-            if (confirm("この句を削除しますか？")) {
+            const password = prompt("削除パスワードを入力してください：");
+            if (password === "mySecret123") {
                 li.remove();
             } else {
+                alert("パスワードが間違っています！");
                 li.classList.remove('blue'); // 青色を戻す
             }
         }, 300);
