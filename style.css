@@ -63,6 +63,27 @@ button:hover {
     background-color: #add8e6;
 }
 
+#toggle-delete-btn {
+    position: fixed;
+    bottom: 20px;
+    left: 20px;
+    padding: 10px 20px;
+    color: white;
+    background-color: #6b8e23;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+}
+
+#toggle-delete-btn.hidden {
+    display: none;
+}
+
+#toggle-delete-btn:hover {
+    background-color: #5a7d1d;
+}
+
 footer {
     position: fixed;
     bottom: 0;
@@ -73,7 +94,7 @@ footer {
     padding: 10px 0;
 }
 
-img {
+img#landscape-image {
     max-width: 100%;
     height: auto;
     margin-top: 20px;
