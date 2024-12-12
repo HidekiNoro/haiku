@@ -119,6 +119,13 @@ header p {
     text-align: left;
 }
 
+.haiku-author {
+    text-align: right;
+    font-size: 0.9rem;
+    color: #555;
+    margin-left: auto;
+}
+
 .meta-container {
     display: flex;
     gap: 10px;
@@ -160,4 +167,17 @@ header p {
     font-size: 10px;
     padding: 5px 10px;
     cursor: pointer;
+}
+
+footer {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    background-color: #6b8e23;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 0.9rem;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
 }
