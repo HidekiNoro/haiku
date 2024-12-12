@@ -14,8 +14,8 @@ header {
 
 main {
     margin: 20px auto;
-    width: 80%;
-    max-width: 600px;
+    width: 90%;
+    max-width: 800px;
 }
 
 form {
@@ -23,9 +23,9 @@ form {
 }
 
 input[type="text"] {
-    width: 80%;
+    width: 45%;
     padding: 10px;
-    margin: 10px 0;
+    margin: 10px 5px;
     border: 1px solid #ccc;
     border-radius: 5px;
 }
@@ -54,14 +54,15 @@ button:hover {
     padding: 10px;
     border-radius: 5px;
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-between;
     transition: background-color 0.3s;
 }
 
 #haiku-list li span {
     flex: 1;
     text-align: left;
+    margin-right: 10px;
 }
 
 #haiku-list li span:last-child {
@@ -87,10 +88,6 @@ button:hover {
     display: block;
 }
 
-#toggle-delete-btn.hidden {
-    display: none;
-}
-
 #toggle-delete-btn:hover {
     background-color: #5a7d1d;
 }
@@ -106,8 +103,9 @@ footer {
 }
 
 img#landscape-image {
-    max-width: 100%;
-    height: auto;
+    width: 100%;
+    max-height: 200px;
+    object-fit: cover;
     margin: 20px 0;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
