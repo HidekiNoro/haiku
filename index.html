@@ -1,1 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俳句の世界</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="container">
+        <header>
+            <h1>俳句の世界</h1>
+            <p>あなたの心に響く俳句を投稿しましょう</p>
+        </header>
+        <main>
+            <img src="行合崎.jpg" alt="行合崎の風景" id="landscape-image">
+            <form id="haiku-form">
+                <input type="text" id="haiku-input" placeholder="俳句を投稿してください" required>
+                <input type="text" id="author-input" placeholder="投稿者名（空欄の場合は匿名になります）">
+                <button type="submit">投稿する</button>
+            </form>
+            <ul id="haiku-list"></ul>
+            <button id="toggle-delete-btn">削除ボタンの表示</button>
+        </main>
+        <footer>
+            <p>© 2024 俳句の世界</p>
+        </footer>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
 
