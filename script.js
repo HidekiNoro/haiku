@@ -40,8 +40,12 @@ document.addEventListener("DOMContentLoaded", function () {
         haikuContainer.className = "haiku-container";
 
         const haikuText = document.createElement("div");
-        haikuText.textContent = `${haiku.text} - 投稿者: ${haiku.name}`;
+        haikuText.textContent = haiku.text;
         haikuText.className = "haiku-text";
+
+        const haikuAuthor = document.createElement("div");
+        haikuAuthor.textContent = `投稿者: ${haiku.name}`;
+        haikuAuthor.className = "haiku-author";
 
         const metaContainer = document.createElement("div");
         metaContainer.className = "meta-container";
@@ -79,6 +83,7 @@ document.addEventListener("DOMContentLoaded", function () {
         metaContainer.appendChild(deleteButton);
 
         haikuContainer.appendChild(haikuText);
+        haikuContainer.appendChild(haikuAuthor);
         haikuContainer.appendChild(metaContainer);
 
         haikuList.prepend(haikuContainer);
