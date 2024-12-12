@@ -1,214 +1,81 @@
-/* 基本のスタイル */
 body {
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
     margin: 0;
     padding: 0;
-    line-height: 1.6;
-    background-color: #f7f7f7;
-    color: #333;
+    text-align: center;
+    background-color: #f4f4f4;
 }
 
-/* ヘッダー */
 header {
-    text-align: center;
     background-color: #6b8e23;
     color: white;
     padding: 20px 0;
 }
 
-header h1 {
-    margin: 0;
-    font-size: 2.5rem;
+main {
+    margin: 20px auto;
+    width: 80%;
+    max-width: 600px;
 }
 
-header p {
-    margin: 5px 0 0;
-    font-size: 1.2rem;
+form {
+    margin-bottom: 20px;
 }
 
-/* コンテンツラッパー */
-#content-wrapper {
-    display: flex;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-    gap: 20px;
-    flex-wrap: wrap; /* 画面幅に応じて折り返す */
-}
-
-.haiku-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin: 15px 0;
-    padding: 15px;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-    flex-wrap: wrap; /* 要素を折り返し可能に */
-}
-
-/* サイドバー（左側） */
-#sidebar {
-    width: 25%;
-    text-align: center;
-    background-color: #e8f5e9;
+input[type="text"] {
+    width: 80%;
     padding: 10px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#sidebar-image {
-    width: 100%;
-    max-width: 300px;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-#author-fixed {
-    font-size: 1.5rem;
-    color: #333;
-    font-weight: bold;
-}
-
-/* メインコンテンツ（右側） */
-#main-content {
-    width: 75%;
-    background-color: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-}
-
-#haiku-post-form {
-    display: flex;
-    gap: 10px;
-}
-
-#haiku-input, #name-input {
-    flex: 1;
-    padding: 10px;
+    margin: 10px 0;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 1rem;
 }
 
-#post-haiku {
+button {
     padding: 10px 20px;
-    background-color: #6b8e23;
     color: white;
+    background-color: #6b8e23;
     border: none;
     border-radius: 5px;
     cursor: pointer;
 }
 
-#post-haiku:hover {
-    background-color: #556b2f;
+button:hover {
+    background-color: #5a7d1d;
 }
 
-/* 各俳句のスタイル */
-.haiku-text {
-    font-size: 1.2rem;
-    font-weight: bold;
-    flex: 1;
-    text-align: left;
+#haiku-list {
+    list-style: none;
+    padding: 0;
 }
 
-.haiku-author {
-    text-align: right;
-    font-size: 0.9rem;
-    color: #555;
-    margin-left: auto;
-}
-
-.meta-container {
+#haiku-list li {
+    background-color: #e6e6e6;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
     display: flex;
-    gap: 10px;
     align-items: center;
+    justify-content: space-between;
+    transition: background-color 0.3s;
 }
 
-.haiku-date {
-    font-size: 0.9rem;
-    color: gray;
-}
-
-.like-btn, .delete-btn {
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    padding: 5px 10px;
-    font-size: 14px;
-}
-
-.delete-btn {
-    background-color: #d9534f;
-    display: none; /* デフォルトで非表示 */
-}
-
-.delete-btn:hover {
-    background-color: #c9302c;
-}
-
-#toggle-delete {
-    position: fixed;
-    bottom: 10px;
-    left: 10px;
-    background-color: #6b8e23;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 10px;
-    padding: 5px 10px;
-    cursor: pointer;
+#haiku-list li.blue {
+    background-color: #add8e6;
 }
 
 footer {
     position: fixed;
-    bottom: 10px;
-    right: 10px;
+    bottom: 0;
+    width: 100%;
     background-color: #6b8e23;
     color: white;
-    border-radius: 5px;
-    padding: 5px 10px;
-    font-size: 0.9rem;
     text-align: center;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    padding: 10px 0;
 }
 
-/* スマートフォン向けのレスポンシブデザイン */
-@media screen and (max-width: 768px) {
-    #content-wrapper {
-        flex-direction: column; /* コンテンツを縦並びに */
-        gap: 10px;
-    }
-
-    .haiku-container {
-        flex-direction: column; /* 各俳句要素を縦並びに */
-        align-items: flex-start; /* 左寄せ */
-    }
-
-    .meta-container {
-        display: flex;
-        justify-content: flex-start;
-        gap: 10px;
-    }
-
-    #sidebar {
-        width: 100%; /* サイドバーを画面幅いっぱいに */
-        text-align: center;
-    }
-
-    #main-content {
-        width: 100%; /* メインコンテンツも画面幅いっぱいに */
-    }
-
-    footer {
-        position: fixed;
-        bottom: 0;
-        width: 100%;
-        text-align: center;
-    }
+img {
+    max-width: 100%;
+    height: auto;
+    margin-top: 20px;
+    display: block;
 }
