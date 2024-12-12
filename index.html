@@ -7,34 +7,23 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <h1>俳句の世界</h1>
-        <p>ようこそ、古葉の俳句の世界へ</p>
-    </header>
-    <main>
-        <div id="content-wrapper">
-            <!-- 左側に画像を追加 -->
-            <div id="sidebar">
-                <img src="行合崎.jpg" alt="風景写真" id="sidebar-image">
-                <p id="author-fixed">古葉</p>
-            </div>
-
-            <!-- メインの俳句投稿部分 -->
-            <div id="main-content">
-                <h2>あなたの心に響く俳句を投稿しましょう</h2>
-                <form id="haiku-post-form">
-                    <input type="text" id="haiku-input" placeholder="俳句を入力してください">
-                    <input type="text" id="name-input" placeholder="名前を入力してください">
-                    <button type="button" id="post-haiku">投稿する</button>
-                </form>
-                <ul id="haiku-list"></ul>
-            </div>
-        </div>
-    </main>
-    <button id="toggle-delete">削除ボタンの表示・非表示</button>
-    <footer>
-        <p>© 2024 俳句の世界</p>
-    </footer>
+    <div id="container">
+        <header>
+            <h1>俳句の世界</h1>
+            <p>あなたの心に響く俳句を投稿しましょう</p>
+        </header>
+        <main>
+            <form id="haiku-form">
+                <input type="text" id="haiku-input" placeholder="俳句を投稿してください" required>
+                <input type="text" id="author-input" placeholder="投稿者名（空欄の場合は匿名になります）">
+                <button type="submit">投稿する</button>
+            </form>
+            <ul id="haiku-list"></ul>
+        </main>
+        <footer>
+            <p>© 2024 俳句の世界</p>
+        </footer>
+    </div>
     <script src="script.js"></script>
 </body>
 </html>
