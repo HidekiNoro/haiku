@@ -57,9 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const deleteButtons = document.querySelectorAll('.delete-btn');
         deleteButtons.forEach(btn => {
             if (deleteButtonsVisible) {
-                btn.classList.remove('hidden');
+                btn.classList.remove('hidden'); // 表示
             } else {
-                btn.classList.add('hidden');
+                btn.classList.add('hidden'); // 非表示
             }
         });
     }
@@ -84,7 +84,6 @@ document.addEventListener('DOMContentLoaded', function() {
     toggleDeleteBtn.addEventListener('click', function() {
         deleteButtonsVisible = !deleteButtonsVisible; // 表示状態をトグル
         updateDeleteButtonVisibility();
-        this.textContent = deleteButtonsVisible ? "削除ボタンの非表示" : "削除ボタンの表示";
     });
 
     // 初期表示
