@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', function () {
     const haikuForm = document.getElementById('haiku-form');
     const haikuInput = document.getElementById('haiku-input');
     const authorInput = document.getElementById('author-input');
@@ -14,9 +14,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 俳句リストを表示
     function renderHaikus() {
-        haikuList.innerHTML = '';
-        savedHaikus.forEach((haiku) => {
-            const li = createHaikuElement(haiku.text, haiku.author, haiku.date);
+        haikuList.innerHTML = ''; // 一度リストをクリア
+        savedHaikus.forEach((haiku, index) => {
+            const li = createHaikuElement(haiku.text, haiku.author, haiku.date, index);
             haikuList.appendChild(li);
         });
 
@@ -30,18 +30,17 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 俳句要素を作成
-    function createHaikuElement(text, author, date) {
+    function createHaikuElement(text, author, date, index) {
         const li = document.createElement('li');
         li.innerHTML = `
             <span>${text}</span>
             <span>${date} | ${author}</span>
-            <button class="delete-btn hidden">削除</button>
+            <button class="delete-btn hidden" data-index="${index}">削除</button>
         `;
         const deleteButton = li.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', function() {
+        deleteButton.addEventListener('click', function () {
             const password = prompt("削除パスワードを入力してください：");
             if (password === DELETE_PASSWORD) {
-                const index = Array.from(haikuList.children).indexOf(li);
                 savedHaikus.splice(index, 1);
                 saveHaikus();
                 renderHaikus();
@@ -65,7 +64,7 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
     // 新しい俳句を追加
-    haikuForm.addEventListener('submit', function(event) {
+    haikuForm.addEventListener('submit', function (event) {
         event.preventDefault();
         const haiku = haikuInput.value;
         const author = authorInput.value || "匿名";
@@ -81,7 +80,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // 削除ボタンの表示/非表示切り替え
-    toggleDeleteBtn.addEventListener('click', function() {
+    toggleDeleteBtn.addEventListener('click', function () {
         deleteButtonsVisible = !deleteButtonsVisible; // 表示状態をトグル
         updateDeleteButtonVisibility();
     });
