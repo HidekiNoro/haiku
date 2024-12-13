@@ -99,6 +99,13 @@ footer {
     padding: 10px 0;
 }
 
+/* スマートフォン用画像スタイル */
+@media (max-width: 768px) {
+    img#landscape-image {
+        max-height: 120px; /* スマホでは高さを小さく調整 */
+    }
+}
+
 img#landscape-image {
     width: 100%;
     max-height: 200px;
