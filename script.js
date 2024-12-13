@@ -56,7 +56,11 @@ document.addEventListener('DOMContentLoaded', function() {
     function updateDeleteButtonVisibility() {
         const deleteButtons = document.querySelectorAll('.delete-btn');
         deleteButtons.forEach(btn => {
-            btn.classList.toggle('hidden', !deleteButtonsVisible);
+            if (deleteButtonsVisible) {
+                btn.classList.remove('hidden');
+            } else {
+                btn.classList.add('hidden');
+            }
         });
     }
 
