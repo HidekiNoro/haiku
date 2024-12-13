@@ -55,11 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
     function updateDeleteButtonVisibility() {
         const deleteButtons = document.querySelectorAll('.delete-btn');
         deleteButtons.forEach(btn => {
-            if (deleteButtonsVisible) {
-                btn.classList.remove('hidden'); // 表示
-            } else {
-                btn.classList.add('hidden'); // 非表示
-            }
+            btn.classList.toggle('hidden', !deleteButtonsVisible);
         });
     }
 
