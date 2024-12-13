@@ -9,6 +9,9 @@ document.addEventListener('DOMContentLoaded', function() {
     // ローカルストレージから保存されたデータを取得
     const savedHaikus = JSON.parse(localStorage.getItem('haikus')) || [];
 
+    // 削除ボタンの表示状態をトグル
+    let deleteButtonsVisible = false;
+
     // 俳句リストを表示
     function renderHaikus() {
         haikuList.innerHTML = '';
@@ -16,6 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
             const li = createHaikuElement(haiku.text, haiku.author, haiku.date);
             haikuList.appendChild(li);
         });
+
+        // 削除ボタンの表示状態を反映
+        updateDeleteButtonVisibility();
     }
 
     // 俳句を保存
@@ -46,6 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
         return li;
     }
 
+    // 削除ボタンの表示/非表示を更新
+    function updateDeleteButtonVisibility() {
+        const deleteButtons = document.querySelectorAll('.delete-btn');
+        deleteButtons.forEach(btn => {
+            btn.classList.toggle('hidden', !deleteButtonsVisible);
+        });
+    }
+
     // 新しい俳句を追加
     haikuForm.addEventListener('submit', function(event) {
         event.preventDefault();
@@ -64,9 +78,9 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // 削除ボタンの表示/非表示切り替え
     toggleDeleteBtn.addEventListener('click', function() {
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(btn => btn.classList.toggle('hidden'));
-        this.textContent = this.textContent === "削除ボタンの表示" ? "削除ボタンの非表示" : "削除ボタンの表示";
+        deleteButtonsVisible = !deleteButtonsVisible; // 表示状態をトグル
+        updateDeleteButtonVisibility();
+        this.textContent = deleteButtonsVisible ? "削除ボタンの非表示" : "削除ボタンの表示";
     });
 
     // 初期表示
