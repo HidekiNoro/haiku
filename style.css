@@ -71,11 +71,6 @@ button:hover {
     font-size: 0.9em;
 }
 
-#haiku-list li.red {
-    background-color: #f8d7da;
-    color: #721c24;
-}
-
 #toggle-delete-btn {
     position: fixed;
     bottom: 20px;
@@ -112,4 +107,3 @@ img#landscape-image {
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
-
