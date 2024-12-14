@@ -14,21 +14,18 @@ header {
     padding: 20px 0;
 }
 
-/* メインコンテンツ */
-main {
-    margin: 20px auto;
-    width: 90%;
-    max-width: 800px;
-    text-align: center;
+/* トップ画像の調整 */
+.image-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
 }
 
-/* トップ画像 */
 img#landscape-image {
-    width: 90%;
-    max-height: 300px; /* 適切なサイズ */
+    width: 90%; /* 横幅を90%に調整 */
+    max-width: 500px; /* デスクトップでの最大幅 */
+    height: auto;
     object-fit: cover;
-    margin: 20px auto;
-    display: block;
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
 }
@@ -75,7 +72,6 @@ button:hover {
     align-items: center;
     justify-content: space-between;
     transition: background-color 0.3s;
-    text-align: center;
 }
 
 #haiku-list li span {
@@ -123,7 +119,8 @@ footer {
 /* スマートフォン向け調整 */
 @media (max-width: 768px) {
     img#landscape-image {
-        max-height: 150px; /* スマホ用にさらに小さく */
+        max-width: 300px; /* スマホでの画像幅 */
+        max-height: 200px;
     }
 
     #haiku-list li {
