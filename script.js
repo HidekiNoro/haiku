@@ -6,81 +6,54 @@ document.addEventListener('DOMContentLoaded', function () {
     const toggleDeleteBtn = document.getElementById('toggle-delete-btn');
     const DELETE_PASSWORD = "mySecret123";
 
-    // ローカルストレージから保存されたデータを取得
-    const savedHaikus = JSON.parse(localStorage.getItem('haikus')) || [];
-
-    // 削除ボタンの表示状態をトグル
     let deleteButtonsVisible = false;
 
-    // 俳句リストを表示
+    // ローカルストレージから保存
+    const savedHaikus = JSON.parse(localStorage.getItem('haikus')) || [];
+
     function renderHaikus() {
-        haikuList.innerHTML = ''; // 一度リストをクリア
+        haikuList.innerHTML = '';
         savedHaikus.forEach((haiku, index) => {
-            const li = createHaikuElement(haiku.text, haiku.author, haiku.date, index);
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span>${haiku.text}</span>
+                <span>${haiku.author || "匿名"} | ${haiku.date}</span>
+                <button class="delete-btn ${deleteButtonsVisible ? "" : "hidden"}" data-index="${index}">削除</button>
+            `;
+
+            li.querySelector('.delete-btn').addEventListener('click', () => {
+                const password = prompt("削除パスワードを入力:");
+                if (password === DELETE_PASSWORD) {
+                    savedHaikus.splice(index, 1);
+                    localStorage.setItem('haikus', JSON.stringify(savedHaikus));
+                    renderHaikus();
+                } else {
+                    alert("パスワードが間違っています！");
+                }
+            });
+
             haikuList.appendChild(li);
         });
-
-        // 削除ボタンの表示状態を反映
-        updateDeleteButtonVisibility();
     }
 
-    // 俳句を保存
-    function saveHaikus() {
-        localStorage.setItem('haikus', JSON.stringify(savedHaikus));
-    }
-
-    // 俳句要素を作成
-    function createHaikuElement(text, author, date, index) {
-        const li = document.createElement('li');
-        li.innerHTML = `
-            <span>${text}</span>
-            <span>${date} | ${author}</span>
-            <button class="delete-btn hidden" data-index="${index}">削除</button>
-        `;
-        const deleteButton = li.querySelector('.delete-btn');
-        deleteButton.addEventListener('click', function () {
-            const password = prompt("削除パスワードを入力してください：");
-            if (password === DELETE_PASSWORD) {
-                savedHaikus.splice(index, 1);
-                saveHaikus();
-                renderHaikus();
-            } else {
-                alert("パスワードが間違っています！");
-            }
-        });
-        return li;
-    }
-
-    // 削除ボタンの表示/非表示を更新
-    function updateDeleteButtonVisibility() {
-        const deleteButtons = document.querySelectorAll('.delete-btn');
-        deleteButtons.forEach(btn => {
-            btn.classList.toggle('hidden', !deleteButtonsVisible);
-        });
-    }
-
-    // 新しい俳句を追加
-    haikuForm.addEventListener('submit', function (event) {
-        event.preventDefault();
-        const haiku = haikuInput.value;
-        const author = authorInput.value || "匿名";
+    haikuForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        const text = haikuInput.value;
+        const author = authorInput.value;
         const date = new Date().toISOString().split('T')[0];
 
-        const newHaiku = { text: haiku, author: author, date: date };
-        savedHaikus.unshift(newHaiku);
-        saveHaikus();
-        renderHaikus();
+        savedHaikus.unshift({ text, author, date });
+        localStorage.setItem('haikus', JSON.stringify(savedHaikus));
 
         haikuInput.value = '';
         authorInput.value = '';
+        renderHaikus();
     });
 
-    // 削除ボタンの表示/非表示切り替え
-    toggleDeleteBtn.addEventListener('click', function () {
-        deleteButtonsVisible = !deleteButtonsVisible; // 表示状態をトグル
-        updateDeleteButtonVisibility();
+    toggleDeleteBtn.addEventListener('click', () => {
+        deleteButtonsVisible = !deleteButtonsVisible;
+        renderHaikus();
     });
 
-    // 初期表示
     renderHaikus();
 });
