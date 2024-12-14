@@ -11,16 +11,24 @@
         <h1>俳句の世界</h1>
     </header>
     <main>
+        <!-- トップ画像 -->
+        <img id="landscape-image" src="行合崎.jpg" alt="俳句の世界">
+        
+        <!-- 投稿フォーム -->
         <form id="haiku-form">
             <input type="text" id="haiku-input" placeholder="俳句を入力" required>
             <input type="text" id="author-input" placeholder="投稿者名（任意）">
             <button type="submit">投稿する</button>
         </form>
+
+        <!-- 投稿された俳句を表示するリスト -->
         <ul id="haiku-list">
-            <!-- ここに投稿された俳句が表示されます -->
+            <!-- ここに俳句がリストとして追加されます -->
         </ul>
     </main>
+    <!-- 削除ボタンの表示/非表示切り替え -->
     <button id="toggle-delete-btn">削除ボタンの表示</button>
+
     <footer>
         © 2024 俳句の世界
     </footer>
