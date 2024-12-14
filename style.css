@@ -1,3 +1,4 @@
+/* 全体の基本スタイル */
 body {
     font-family: "Hiragino Kaku Gothic ProN", sans-serif;
     margin: 0;
@@ -6,18 +7,24 @@ body {
     background-color: #f4f4f4;
 }
 
+/* ヘッダー */
 header {
     background-color: #6b8e23;
     color: white;
     padding: 20px 0;
 }
 
+/* メインコンテナ */
 main {
     margin: 20px auto;
     width: 90%;
     max-width: 800px;
+    min-height: calc(100vh - 120px); /* フッターとヘッダーを除いた高さ */
+    overflow-y: auto; /* スクロール可能にする */
+    box-sizing: border-box;
 }
 
+/* 入力フォーム */
 form {
     margin-bottom: 20px;
 }
@@ -30,6 +37,7 @@ input[type="text"] {
     border-radius: 5px;
 }
 
+/* ボタン */
 button {
     padding: 10px 20px;
     color: white;
@@ -43,9 +51,11 @@ button:hover {
     background-color: #5a7d1d;
 }
 
+/* 俳句リスト */
 #haiku-list {
     list-style: none;
     padding: 0;
+    margin-bottom: 60px; /* フッターのための余白 */
 }
 
 #haiku-list li {
@@ -71,6 +81,7 @@ button:hover {
     font-size: 0.9em;
 }
 
+/* 削除ボタンのトグル */
 #toggle-delete-btn {
     position: fixed;
     bottom: 20px;
@@ -81,7 +92,6 @@ button:hover {
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    display: block;
     z-index: 100;
 }
 
@@ -89,6 +99,24 @@ button:hover {
     background-color: #5a7d1d;
 }
 
+/* 画像のスタイル */
+img#landscape-image {
+    width: 100%;
+    max-height: 150px; /* スマホ用に調整 */
+    object-fit: cover;
+    margin: 20px 0;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* スマートフォン向けの調整 */
+@media (max-width: 768px) {
+    img#landscape-image {
+        max-height: 100px; /* スマホ用にさらに小さく */
+    }
+}
+
+/* フッター */
 footer {
     position: fixed;
     bottom: 0;
@@ -97,19 +125,5 @@ footer {
     color: white;
     text-align: center;
     padding: 10px 0;
-}
-
-img#landscape-image {
-    width: 100%;
-    max-height: 150px; /* 小さく調整 */
-    object-fit: cover;
-    margin: 20px 0;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-@media (max-width: 768px) {
-    img#landscape-image {
-        max-height: 100px; /* スマホでさらに小さく */
-    }
+    z-index: 10;
 }
