@@ -50,6 +50,19 @@
     #haiku-form button:hover {
         background-color: #0056b3;
     }
+    #haiku-list {
+        list-style: none;
+        padding: 0;
+        margin: 20px auto;
+        width: 80%;
+    }
+    #haiku-list li {
+        background-color: #f9f9f9;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
     .back-button {
         display: inline-block;
         padding: 10px 20px;
@@ -95,5 +108,47 @@
   <footer>
     <p>© 2024 俳句の世界</p>
   </footer>
+
+  <script>
+    // ページ読み込み時にローカルストレージから俳句を読み込む
+    document.addEventListener("DOMContentLoaded", function () {
+        const haikuList = document.getElementById("haiku-list");
+        const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
+
+        // ローカルストレージの俳句をリストに追加
+        storedHaikus.forEach(haiku => {
+            const li = document.createElement("li");
+            li.textContent = `${haiku.name}: ${haiku.text}`;
+            haikuList.appendChild(li);
+        });
+    });
+
+    // フォーム送信時に俳句をローカルストレージに保存
+    document.getElementById("haiku-form").addEventListener("submit", function (e) {
+        e.preventDefault(); // ページリロードを防止
+        const haikuInput = document.getElementById("haiku-input");
+        const nameInput = document.getElementById("name-input");
+        const haikuList = document.getElementById("haiku-list");
+
+        const haikuText = haikuInput.value.trim();
+        const nameText = nameInput.value.trim() || "匿名";
+
+        if (haikuText) {
+            // 新しい俳句をリストに追加
+            const li = document.createElement("li");
+            li.textContent = `${nameText}: ${haikuText}`;
+            haikuList.appendChild(li);
+
+            // ローカルストレージに保存
+            const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
+            storedHaikus.push({ name: nameText, text: haikuText });
+            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
+
+            // 入力フィールドをリセット
+            haikuInput.value = "";
+            nameInput.value = "";
+        }
+    });
+  </script>
 </body>
 </html>
