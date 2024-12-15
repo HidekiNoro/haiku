@@ -1,39 +1,35 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>俳句の世界</title>
-    <link rel="stylesheet" href="styles.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>俳句の世界</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <h1>俳句の世界</h1>
-    </header>
-    <main>
-        <!-- トップ画像 -->
-        <div class="image-container">
-            <img id="landscape-image" src="行合崎.jpg" alt="俳句の世界">
-        </div>
+  <header>
+    <h1>俳句の世界</h1>
+  </header>
 
-        <!-- 投稿フォーム -->
-        <form id="haiku-form">
-            <input type="text" id="haiku-input" placeholder="俳句を入力" required>
-            <input type="text" id="author-input" placeholder="投稿者名（任意）">
-            <button type="submit">投稿する</button>
-        </form>
+  <main>
+    <img src="行合崎.jpg" alt="風景画像" class="main-image">
 
-        <!-- 投稿された俳句を表示するリスト -->
-        <ul id="haiku-list">
-            <!-- ここに俳句がリストとして追加されます -->
-        </ul>
-    </main>
-    <!-- 削除ボタンの表示/非表示切り替え -->
-    <button id="toggle-delete-btn">削除ボタンの表示</button>
+    <div class="form-container">
+      <form id="haiku-form">
+        <input type="text" id="haiku-input" placeholder="俳句を入力してください">
+        <input type="text" id="name-input" placeholder="投稿者名（匿名可）">
+        <button type="submit">投稿</button>
+      </form>
+    </div>
 
-    <footer>
-        © 2024 俳句の世界
-    </footer>
-    <script src="script.js"></script>
+    <ul id="haiku-list"></ul>
+  </main>
+
+  <footer>
+    <p>© 2024 俳句の世界</p>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
+
