@@ -1,129 +1,84 @@
-/* 全体の基本スタイル */
 body {
-    font-family: "Hiragino Kaku Gothic ProN", sans-serif;
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    background-color: #f4f4f4;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+  background-color: #f4f4f4;
 }
 
-/* ヘッダー */
 header {
-    background-color: #6b8e23;
-    color: white;
-    padding: 20px 0;
+  background-color: #6b8e23;
+  color: white;
+  padding: 10px 0;
 }
 
-/* トップ画像の調整 */
-.image-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
+h1 {
+  margin: 0;
 }
 
-img#landscape-image {
-    width: 90%; /* 横幅を90%に調整 */
-    max-width: 500px; /* デスクトップでの最大幅 */
-    height: auto;
-    object-fit: cover;
-    border-radius: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+.main-image {
+  width: 33%; /* 画像を三分の一に */
+  margin: 20px 0;
 }
 
-/* 投稿フォーム */
-form {
-    margin-bottom: 20px;
+.form-container {
+  margin: 20px 0;
 }
 
-input[type="text"] {
-    width: 45%;
-    padding: 10px;
-    margin: 10px 5px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+#haiku-form input {
+  padding: 10px;
+  margin: 5px;
+  font-size: 16px;
 }
 
-button {
-    padding: 10px 20px;
-    color: white;
-    background-color: #6b8e23;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+#haiku-form button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #6b8e23;
+  color: white;
+  border: none;
+  cursor: pointer;
 }
 
-button:hover {
-    background-color: #5a7d1d;
-}
-
-/* 投稿リスト */
 #haiku-list {
-    list-style: none;
-    padding: 0;
-    margin-bottom: 60px; /* フッターのための余白 */
+  list-style: none;
+  padding: 0;
+  margin: 20px auto;
+  width: 80%;
 }
 
 #haiku-list li {
-    background-color: #e6e6e6;
-    margin: 10px 0;
-    padding: 10px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    transition: background-color 0.3s;
+  background-color: #ffffff;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  position: relative;
 }
 
-#haiku-list li span {
-    flex: 1;
-    text-align: left;
-    margin-right: 10px;
+.haiku-content {
+  font-size: 18px;
 }
 
-#haiku-list li span:last-child {
-    text-align: right;
-    color: #555;
-    font-size: 0.9em;
+.haiku-meta {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
 }
 
-/* 削除ボタンのトグル */
-#toggle-delete-btn {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    padding: 10px 20px;
-    color: white;
-    background-color: #6b8e23;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    z-index: 100;
+.haiku-meta button {
+  padding: 5px 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
 }
 
-#toggle-delete-btn:hover {
-    background-color: #5a7d1d;
+.haiku-meta button:hover {
+  background-color: #c9302c;
 }
 
-/* フッター */
-footer {
-    position: fixed;
-    bottom: 0;
-    width: 100%;
-    background-color: #6b8e23;
-    color: white;
-    text-align: center;
-    padding: 10px 0;
-    z-index: 10;
-}
-
-/* スマートフォン向け調整 */
-@media (max-width: 768px) {
-    img#landscape-image {
-        max-width: 300px; /* スマホでの画像幅 */
-        max-height: 200px;
-    }
-
-    #haiku-list li {
-        flex-direction: column; /* スマホでは俳句と日付を縦並び */
-    }
+.meta-item {
+  font-size: 14px;
 }
