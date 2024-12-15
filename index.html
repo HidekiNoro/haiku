@@ -4,8 +4,52 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>俳句の世界</title>
-  <link rel="stylesheet" href="styles.css">
   <style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 0;
+        text-align: center;
+    }
+    header {
+        background-color: #f4f4f4;
+        padding: 20px;
+        border-bottom: 1px solid #ddd;
+    }
+    .main-image {
+        max-width: 100%;
+        height: auto;
+        margin: 20px 0;
+    }
+    .form-container {
+        margin: 20px 0;
+    }
+    #haiku-form {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
+    }
+    #haiku-form input[type="text"] {
+        width: 80%;
+        padding: 10px;
+        font-size: 16px;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+    }
+    #haiku-form button {
+        padding: 10px 20px;
+        font-size: 16px;
+        background-color: #007BFF;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #haiku-form button:hover {
+        background-color: #0056b3;
+    }
     .back-button {
         display: inline-block;
         padding: 10px 20px;
@@ -13,12 +57,18 @@
         background-color: #007BFF;
         text-decoration: none;
         border-radius: 5px;
+        margin: 20px auto;
     }
     .back-button:hover {
         background-color: #0056b3;
     }
-</style>
-
+    footer {
+        margin-top: 20px;
+        background-color: #f4f4f4;
+        padding: 10px;
+        border-top: 1px solid #ddd;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -37,22 +87,13 @@
     </div>
 
     <ul id="haiku-list"></ul>
-    <a href="前のページのURL" class="back-button">戻る</a>
-    <body>
-    <h1>現在のページ</h1>
-    <!-- 他のコンテンツ -->
-    <a href="前のページのURL" class="back-button">戻る</a>
-      <a href="index.html" class="back-button">戻る</a>
-
-</body>
-
-
+    
+    <!-- 戻るボタン -->
+    <a href="index.html" class="back-button">戻る</a>
   </main>
 
   <footer>
     <p>© 2024 俳句の世界</p>
   </footer>
-
-  <script src="script.js"></script>
 </body>
 </html>
