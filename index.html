@@ -1,154 +1,23 @@
 <!DOCTYPE html>
-<html lang="ja">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>俳句の世界</title>
-  <style>
-    body {
-        font-family: Arial, sans-serif;
-        line-height: 1.6;
-        margin: 0;
-        padding: 0;
-        text-align: center;
-    }
-    header {
-        background-color: #f4f4f4;
-        padding: 20px;
-        border-bottom: 1px solid #ddd;
-    }
-    .main-image {
-        max-width: 100%;
-        height: auto;
-        margin: 20px 0;
-    }
-    .form-container {
-        margin: 20px 0;
-    }
-    #haiku-form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        gap: 10px;
-    }
-    #haiku-form input[type="text"] {
-        width: 80%;
-        padding: 10px;
-        font-size: 16px;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    #haiku-form button {
-        padding: 10px 20px;
-        font-size: 16px;
-        background-color: #007BFF;
-        color: white;
-        border: none;
-        border-radius: 5px;
-        cursor: pointer;
-    }
-    #haiku-form button:hover {
-        background-color: #0056b3;
-    }
-    #haiku-list {
-        list-style: none;
-        padding: 0;
-        margin: 20px auto;
-        width: 80%;
-    }
-    #haiku-list li {
-        background-color: #f9f9f9;
-        padding: 10px;
-        margin: 5px 0;
-        border: 1px solid #ddd;
-        border-radius: 5px;
-    }
-    .back-button {
-        display: inline-block;
-        padding: 10px 20px;
-        color: white;
-        background-color: #007BFF;
-        text-decoration: none;
-        border-radius: 5px;
-        margin: 20px auto;
-    }
-    .back-button:hover {
-        background-color: #0056b3;
-    }
-    footer {
-        margin-top: 20px;
-        background-color: #f4f4f4;
-        padding: 10px;
-        border-top: 1px solid #ddd;
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>俳句の世界</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <header>
-    <h1>俳句の世界</h1>
-  </header>
-
-  <main>
-    <img src="行合崎.jpg" alt="風景画像" class="main-image">
-
-    <div class="form-container">
-      <form id="haiku-form">
-        <input type="text" id="haiku-input" placeholder="俳句を入力してください">
-        <input type="text" id="name-input" placeholder="投稿者名（匿名可）">
-        <button type="submit">投稿</button>
-      </form>
+    <div class="container">
+        <h1>俳句の世界</h1>
+        <form id="haiku-form">
+            <label for="haiku-input">俳句を投稿する:</label>
+            <input type="text" id="haiku-input" placeholder="ここに俳句を入力してください">
+            <input type="text" id="author-input" placeholder="投稿者名（空欄可）">
+            <button type="button" onclick="addHaiku()">投稿する</button>
+        </form>
+        <button id="toggle-delete-btn" onclick="toggleDeleteButtons()">削除ボタンを表示する</button>
+        <ul id="haiku-list"></ul>
     </div>
-
-    <ul id="haiku-list"></ul>
-    
-    <!-- 戻るボタン -->
-    <a href="index.html" class="back-button">戻る</a>
-  </main>
-
-  <footer>
-    <p>© 2024 俳句の世界</p>
-  </footer>
-
-  <script>
-    // ページ読み込み時にローカルストレージから俳句を読み込む
-    document.addEventListener("DOMContentLoaded", function () {
-        const haikuList = document.getElementById("haiku-list");
-        const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
-
-        // ローカルストレージの俳句をリストに追加
-        storedHaikus.forEach(haiku => {
-            const li = document.createElement("li");
-            li.textContent = `${haiku.name}: ${haiku.text}`;
-            haikuList.appendChild(li);
-        });
-    });
-
-    // フォーム送信時に俳句をローカルストレージに保存
-    document.getElementById("haiku-form").addEventListener("submit", function (e) {
-        e.preventDefault(); // ページリロードを防止
-        const haikuInput = document.getElementById("haiku-input");
-        const nameInput = document.getElementById("name-input");
-        const haikuList = document.getElementById("haiku-list");
-
-        const haikuText = haikuInput.value.trim();
-        const nameText = nameInput.value.trim() || "匿名";
-
-        if (haikuText) {
-            // 新しい俳句をリストに追加
-            const li = document.createElement("li");
-            li.textContent = `${nameText}: ${haikuText}`;
-            haikuList.appendChild(li);
-
-            // ローカルストレージに保存
-            const storedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
-            storedHaikus.push({ name: nameText, text: haikuText });
-            localStorage.setItem("haikus", JSON.stringify(storedHaikus));
-
-            // 入力フィールドをリセット
-            haikuInput.value = "";
-            nameInput.value = "";
-        }
-    });
-  </script>
+    <script src="script.js"></script>
 </body>
 </html>
