@@ -3,6 +3,12 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f4f4f4;
+
+
+
+     background-image: url('images/myimage.jpg');
+    background-size: cover; /* 画面全体に合わせる */
+    background-position: center; /* 中央揃え */
 }
 
 .container {
