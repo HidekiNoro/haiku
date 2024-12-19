@@ -26,7 +26,6 @@ function addHaiku() {
         </div>
     `;
 
-    // 新しい俳句をリストの一番上に追加
     haikuList.insertBefore(li, haikuList.firstChild);
 
     haikuInput.value = "";
@@ -49,8 +48,13 @@ function toggleDeleteButtons() {
 
 // 俳句を削除する
 function deleteHaiku(button) {
-    const li = button.closest("li");
-    li.remove();
+    const password = prompt("削除するにはパスワードを入力してください:");
+    if (password === "mySecret123") {
+        const li = button.closest("li");
+        li.remove();
+    } else {
+        alert("パスワードが違います！");
+    }
 }
 
 // いいね！機能
