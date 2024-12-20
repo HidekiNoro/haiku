@@ -2,14 +2,7 @@ body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
-    background-color: blue;
-
-
-
- 
-
-    width: 33%;
-    height: auto;
+    background-color: #f0f8ff;
 }
 
 .container {
@@ -71,12 +64,13 @@ ul {
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
+    flex-wrap: wrap; /* スマートフォン対応 */
 }
 
 #haiku-list li img {
-    width: 33%; /* 画像を1/3に設定 */
-    height: auto;
-    margin-right: 10px;
+    width: 100%; /* 横幅を100%に設定 */
+    height: auto; /* 高さを自動調整 */
+    margin-bottom: 10px;
     border-radius: 5px;
 }
 
@@ -106,4 +100,19 @@ ul {
 
 .like-btn:hover {
     background-color: #2980b9;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 10px;
+    }
+
+    #haiku-list li {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    #haiku-list li img {
+        width: 100%;
+    }
 }
