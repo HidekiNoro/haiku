@@ -3,6 +3,7 @@ body {
     margin: 0;
     padding: 0;
     background-color: #f0f8ff;
+    position: relative; /* 削除ボタンを配置するために追加 */
 }
 
 .container {
@@ -12,7 +13,7 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    text-align: center; /* 全体のテキストを中央揃えに */
+    text-align: center;
 }
 
 h1 {
@@ -53,11 +54,6 @@ button:hover {
     background-color: #2bbbad;
 }
 
-#toggle-delete-btn {
-    margin-bottom: 20px;
-    background-color: #ff7043;
-}
-
 ul {
     list-style: none;
     padding: 0;
@@ -65,8 +61,8 @@ ul {
 
 #haiku-list li {
     display: flex;
-    flex-direction: column; /* 縦方向に揃える */
-    align-items: center; /* 横中央に揃える */
+    align-items: center;
+    justify-content: space-between;
     background-color: #f9f9f9;
     margin-bottom: 10px;
     padding: 10px;
@@ -74,41 +70,63 @@ ul {
     border-radius: 5px;
 }
 
+#haiku-list li div {
+    display: flex;
+    align-items: center;
+    flex: 1;
+}
+
 #haiku-list li p {
-    font-size: 1.2em;
-    margin: 0 0 10px;
+    margin-right: 20px; /* テキスト間の余白 */
+    flex: 2;
+    text-align: left;
 }
 
 #haiku-list li small {
-    color: #555;
+    margin-right: 20px; /* 投句者と日時の余白 */
 }
 
+.like-btn,
 .delete-btn {
-    display: none;
-    padding: 5px 10px;
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.delete-btn:hover {
-    background-color: #c0392b;
-}
-
-.like-btn {
     padding: 5px 10px;
     background-color: #3498db;
     color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    margin-right: 10px;
+    margin-left: 10px;
 }
 
 .like-btn:hover {
     background-color: #2980b9;
+}
+
+.delete-btn {
+    display: none; /* デフォルトで非表示 */
+    background-color: #e74c3c;
+}
+
+.delete-btn:hover {
+    background-color: #c0392b;
+}
+
+/* 削除ボタン表示切り替えボタン */
+#toggle-delete-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #ff7043;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 0.8em;
+    opacity: 0.8;
+}
+
+#toggle-delete-btn:hover {
+    opacity: 1;
 }
 
 @media (max-width: 600px) {
@@ -118,6 +136,10 @@ ul {
 
     #haiku-list li {
         flex-direction: column;
-        align-items: center;
+        align-items: flex-start;
+    }
+
+    #toggle-delete-btn {
+        font-size: 0.7em;
     }
 }
