@@ -16,6 +16,7 @@ function addHaiku() {
 
     const li = document.createElement("li");
     li.innerHTML = `
+        <img src="行合崎.jpg" alt="俳句の画像">
         <div>
             <p>${haikuText}</p>
             <small>投稿者: ${authorText}</small>
