@@ -68,9 +68,9 @@ ul {
 }
 
 #haiku-list li img {
-    width: 100%; /* 横幅を100%に設定 */
+    width: 20%; /* 画像を現在の1/5のサイズに設定 */
     height: auto; /* 高さを自動調整 */
-    margin-bottom: 10px;
+    margin-right: 10px; /* テキストとの余白を確保 */
     border-radius: 5px;
 }
 
@@ -113,6 +113,7 @@ ul {
     }
 
     #haiku-list li img {
-        width: 100%;
+        width: 40%; /* スマートフォンでは少し大きめに */
+        margin-bottom: 10px;
     }
 }
