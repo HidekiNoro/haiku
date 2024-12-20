@@ -12,11 +12,19 @@ body {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    text-align: center; /* 全体のテキストを中央揃えに */
 }
 
 h1 {
-    text-align: center;
     color: #333;
+}
+
+/* 固定画像のスタイル */
+.header-image {
+    width: 20%; /* 画像を全体の20%に縮小 */
+    height: auto; /* 高さをアスペクト比に合わせて自動調整 */
+    display: block;
+    margin: 0 auto 20px auto; /* 横中央に配置し、下部に余白 */
 }
 
 form {
@@ -57,21 +65,22 @@ ul {
 
 #haiku-list li {
     display: flex;
-    align-items: center;
-    justify-content: space-between;
+    flex-direction: column; /* 縦方向に揃える */
+    align-items: center; /* 横中央に揃える */
     background-color: #f9f9f9;
     margin-bottom: 10px;
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 5px;
-    flex-wrap: wrap; /* スマートフォン対応 */
 }
 
-#haiku-list li img {
-    width: 20%; /* 画像を現在の1/5のサイズに設定 */
-    height: auto; /* 高さを自動調整 */
-    margin-right: 10px; /* テキストとの余白を確保 */
-    border-radius: 5px;
+#haiku-list li p {
+    font-size: 1.2em;
+    margin: 0 0 10px;
+}
+
+#haiku-list li small {
+    color: #555;
 }
 
 .delete-btn {
@@ -109,11 +118,6 @@ ul {
 
     #haiku-list li {
         flex-direction: column;
-        align-items: flex-start;
-    }
-
-    #haiku-list li img {
-        width: 40%; /* スマートフォンでは少し大きめに */
-        margin-bottom: 10px;
+        align-items: center;
     }
 }
