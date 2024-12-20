@@ -15,13 +15,14 @@ function addHaiku() {
     }
 
     const li = document.createElement("li");
+    const currentDate = new Date().toLocaleDateString(); // 日付を取得
+
     li.innerHTML = `
         <p>${haikuText}</p>
         <small>投稿者: ${authorText}</small>
-        <div>
-            <button class="like-btn" onclick="likeHaiku(this)">いいね！ <span>0</span></button>
-            <button class="delete-btn" onclick="deleteHaiku(this)">削除</button>
-        </div>
+        <small>${currentDate}</small>
+        <button class="like-btn" onclick="likeHaiku(this)">いいね！ <span>0</span></button>
+        <button class="delete-btn" onclick="deleteHaiku(this)">削除</button>
     `;
 
     haikuList.insertBefore(li, haikuList.firstChild);
