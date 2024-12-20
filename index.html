@@ -9,6 +9,8 @@
 <body>
     <div class="container">
         <h1>俳句の世界</h1>
+        <!-- 固定画像 -->
+        <img src="行合崎.jpg" alt="俳句の画像" class="header-image">
         <form id="haiku-form">
             <label for="haiku-input">俳句を投稿する:</label>
             <input type="text" id="haiku-input" placeholder="ここに俳句を入力してください">
@@ -16,20 +18,7 @@
             <button type="button" onclick="addHaiku()">投稿する</button>
         </form>
         <button id="toggle-delete-btn" onclick="toggleDeleteButtons()">削除ボタンを表示する</button>
-        <ul id="haiku-list">
-            <!-- サンプル画像付き俳句 -->
-            <li>
-                <img src="行合崎.jpg" alt="俳句の画像">
-                <div>
-                    <p>紅葉の山　静寂の中に　秋の風</p>
-                    <small>投稿者: 匿名</small>
-                </div>
-                <div>
-                    <button class="like-btn" onclick="likeHaiku(this)">いいね！ <span>0</span></button>
-                    <button class="delete-btn" onclick="deleteHaiku(this)">削除</button>
-                </div>
-            </li>
-        </ul>
+        <ul id="haiku-list"></ul>
     </div>
     <script src="script.js"></script>
 </body>
