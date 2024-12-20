@@ -16,11 +16,8 @@ function addHaiku() {
 
     const li = document.createElement("li");
     li.innerHTML = `
-        <img src="行合崎.jpg" alt="俳句の画像">
-        <div>
-            <p>${haikuText}</p>
-            <small>投稿者: ${authorText}</small>
-        </div>
+        <p>${haikuText}</p>
+        <small>投稿者: ${authorText}</small>
         <div>
             <button class="like-btn" onclick="likeHaiku(this)">いいね！ <span>0</span></button>
             <button class="delete-btn" onclick="deleteHaiku(this)">削除</button>
