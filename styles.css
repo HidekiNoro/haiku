@@ -145,3 +145,25 @@ ul {
         font-size: 0.7em;
     }
 }
+.affiliate-link {
+    margin: 20px 0;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+.affiliate-link a {
+    color: #0073e6;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.affiliate-link a:hover {
+    text-decoration: underline;
+}
+
+.affiliate-link img {
+    display: none; /* トラッキング画像を非表示に */
+}
+
