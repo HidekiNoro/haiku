@@ -2,11 +2,29 @@ const haikuList = document.getElementById("haiku-list");
 const toggleDeleteBtn = document.getElementById("toggle-delete-btn");
 let showDeleteButtons = false;
 
-// ページ読み込み時に保存された俳句を表示
-window.onload = function () {
+// アクセスカウンターを更新する関数
+async function updateCounter() {
+    try {
+        // CountAPI のエンドポイントにリクエストを送信
+        const response = await fetch('https://api.countapi.xyz/hit/yourdomain.com/haiku');
+        const data = await response.json();
+        // カウンターの値を表示
+        document.getElementById('access-count').innerText = `アクセス数: ${data.value}`;
+    } catch (error) {
+        console.error('カウンターの取得に失敗しました:', error);
+        document.getElementById('access-count').innerText = `アクセス数: 取得失敗`;
+    }
+}
+
+// ページ読み込み時に保存された俳句を表示し、アクセスカウンターを更新
+window.addEventListener("load", function () {
+    // 俳句の表示
     const savedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     savedHaikus.forEach(({ text, author, date }) => addHaikuToList(text, author, date));
-};
+
+    // アクセスカウンターの更新
+    updateCounter();
+});
 
 // 俳句を追加する
 function addHaiku() {
@@ -64,7 +82,7 @@ function toggleDeleteButtons() {
 // 俳句を削除する
 function deleteHaiku(button) {
     const password = prompt("削除するにはパスワードを入力してください:");
-    if (password === "mySecret123") {
+    if (password === "mySecret123") { // ここは適宜変更してください
         const li = button.closest("li");
         const text = li.querySelector("p").textContent;
 
