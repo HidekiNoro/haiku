@@ -6,7 +6,7 @@ let showDeleteButtons = false;
 async function updateCounter() {
     try {
         // CountAPI のエンドポイントにリクエストを送信
-        const response = await fetch('https://api.countapi.xyz/hit/yourdomain.com/haiku');
+        const response = await fetch('https://api.countapi.xyz/hit/hidekinoro.github.io/haiku');
         const data = await response.json();
         // カウンターの値を表示
         document.getElementById('access-count').innerText = `アクセス数: ${data.value}`;
