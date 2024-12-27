@@ -22,7 +22,7 @@ h1 {
 
 /* 固定画像のスタイル */
 .header-image {
-    width: 30%; /* 画像を全体の30%に縮小 */
+    width: 50%; /* 画像を全体の30%に縮小 */
     height: auto; /* 高さをアスペクト比に合わせて自動調整 */
     display: block;
     margin: 10px auto; /* 横中央に配置し、上下に少し余白 */
