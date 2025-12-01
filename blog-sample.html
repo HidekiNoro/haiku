@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <title>俳句ブログ見本 - HAIKU BLOG SAMPLE</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    /* ---- 全体のデザイン ---- */
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Yu Gothic", "Meiryo", sans-serif;
+      line-height: 1.6;
+      background: #f5f5f5;
+      color: #333;
+    }
+
+    a {
+      color: #0066cc;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    header {
+      background: #222;
+      color: #fff;
+      padding: 1rem 1.5rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+    }
+
+    header p {
+      margin: 0.3rem 0 0;
+      font-size: 0.9rem;
+      opacity: 0.8;
+    }
+
+    nav {
+      background: #444;
+      color: #fff;
+      padding: 0.4rem 1.5rem;
+      font-size: 0.9rem;
+    }
+
+    nav a {
+      color: #fff;
+      margin-right: 1rem;
+    }
+
+    .wrapper {
+      max-width: 1100px;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+      box-sizing: border-box;
+    }
+
+    /* ---- メインとサイドバー ---- */
+    .layout {
+      display: flex;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .content {
+      flex: 3;
+    }
+
+    .sidebar {
+      flex: 1.3;
+    }
+
+    /* ---- 記事カード ---- */
+    .post {
+      background: #fff;
+      border-radius: 12px;
+      padding: 1.2rem 1.4rem;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+    }
+
+    .post h2 {
+      margin: 0 0 0.4rem;
+      font-size: 1.3rem;
+    }
+
+    .post-meta {
+      font-size: 0.8rem;
+      color: #777;
+      margin-bottom: 0.6rem;
+    }
+
+    .haiku {
+      font-size: 1.1rem;
+      margin: 0.6rem 0;
+      line-height: 1.8;
+      letter-spacing: 0.1em;
+    }
+
+    .haiku span {
+      display: block;
+    }
+
+    .kigo {
+      font-size: 0.9rem;
+      color: #666;
+      margin-top: 0.4rem;
+    }
+
+    .comment {
+      margin-top: 0.6rem;
+      font-size: 0.9rem;
+    }
+
+    /* ---- 広告ブロック ---- */
+    .ad-block {
+      background: #fff;
+      border-radius: 10px;
+      padding: 0.8rem 0.9rem;
+      margin-bottom: 1rem;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+      font-size: 0.85rem;
+    }
+
+    .ad-title {
+      font-weight: bold;
+      margin-bottom: 0.4rem;
+      font-size: 0.9rem;
+      border-left: 4px solid #ff9800;
+      padding-left: 0.4rem;
+    }
+
+    .ad-note {
+      color: #888;
+      font-size: 0.78rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .footer-ad {
+      margin-top: 1.5rem;
+    }
+
+    /* ---- フッター ---- */
+    footer {
+      margin-top: 2rem;
+      padding: 1rem 1.5rem;
+      background: #222;
+      color: #ccc;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    /* ---- スマホ用レイアウト ---- */
+    @media (max-width: 768px) {
+      .layout {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>津軽俳句プログ（見本）</h1>
+    <p>日々の俳句と小さなエッセイ。ここに広告コードを貼れば収益化もOK。</p>
+  </header>
+
+  <nav>
+    <a href="#">ホーム</a>
+    <a href="#">俳句一覧</a>
+    <a href="#">作者プロフィール</a>
+    <a href="#">お問い合わせ</a>
+  </nav>
+
+  <div class="wrapper">
+    <!-- 上部に横長広告を置きたい場合 -->
+    <div class="ad-block">
+      <div class="ad-title">【広告スペース：ヘッダー下（728×90 など）】</div>
+      <div class="ad-note">ここに Google AdSense や 楽天アフィリエイトの「横長バナー」のコードを貼り付けてください。</div>
+      <!-- ▼▼▼ ここに AdSense や 楽天のコードをそのまま貼る ▼▼▼ -->
+      <!-- 例：Google AdSense のスクリプト / Rakuten のバナーコードなど -->
+      <!-- ▲▲▲ ここまで ▲▲▲ -->
+    </div>
+
+    <div class="layout">
+      <!-- メイン：俳句記事 -->
+      <main class="content">
+        <!-- 記事１ -->
+        <article class="post">
+          <h2>冬繋ぐ　育て白菜　浅漬けで</h2>
+          <div class="post-meta">投稿日：2025-12-01｜カテゴリ：家庭菜園・冬</div>
+          <p class="haiku">
+            <span>冬繋ぐ</span>
+            <span>育て白菜</span>
+            <span>浅漬けで</span>
+          </p>
+          <p class="kigo">【季語】白菜（三冬）</p>
+          <p class="comment">
+            家庭菜園で初めてうまく育った白菜を浅漬けにして味わう。<br>
+            「この四玉で、この冬をなんとか乗り切れるぞ」という小さな自給自足の喜びを詠んだ一句です。
+          </p>
+
+          <!-- 記事本文の途中に入れる広告例 -->
+          <div class="ad-block">
+            <div class="ad-title">【記事内広告】</div>
+            <div class="ad-note">本文の途中に入れるレスポンシブ広告や、楽天の商品リンクなどをここに。</div>
+            <!-- ▼▼▼ ここに記事内用の広告コードを貼る ▼▼▼ -->
+            <!-- AdSense: ディスプレイ広告 / Rakuten: 本や食品のリンク など -->
+            <!-- ▲▲▲ ここまで ▲▲▲ -->
+          </div>
+
+          <p class="comment">
+            ここには、作り方のメモや、塩の量、浅漬け器のレビュー、祖母の漬物の思い出など、
+            少し長めの文章を書いてもよいでしょう。
+          </p>
+        </article>
+
+        <!-- 記事２（サンプル） -->
+        <article class="post">
+          <h2>沢庵を　齧る音にて　今日も生き</h2>
+          <div class="post-meta">投稿日：2025-11-26｜カテゴリ：漬物・日記</div>
+          <p class="haiku">
+            <span>沢庵を</span>
+            <span>齧る音にて</span>
+            <span>今日も生き</span>
+          </p>
+          <p class="kigo">【季語】沢庵漬（初冬）</p>
+          <p class="comment">
+            若い頃は「臭い」と敬遠していた沢庵も、年を重ねると、あのカリカリという音が
+            「今日も生きている」実感に変わっていく──そんな心境の変化を詠んだ句です。
+          </p>
+        </article>
+
+        <!-- 下部にも広告スペースを用意（任意） -->
+        <div class="ad-block footer-ad">
+          <div class="ad-title">【ページ下部の広告スペース】</div>
+          <div class="ad-note">
+            スクロールした一番下に表示したい広告をここに。<br>
+            サイト全体の共通フッター広告として使えます。
+          </div>
+          <!-- ▼▼▼ フッター用の広告コードを貼る ▼▼▼ -->
+          <!-- ▲▲▲ ここまで ▲▲▲ -->
+        </div>
+      </main>
+
+      <!-- サイドバー：プロフィールと広告 -->
+      <aside class="sidebar">
+        <div class="post">
+          <h2>作者プロフィール</h2>
+          <p>薬剤師／津軽在住／70代。<br>
+             医学の勉強と家庭菜園と温泉と俳句をこよなく愛する。</p>
+          <p>このブログでは、日々の小さな気づきと俳句を記録しています。</p>
+        </div>
+
+        <div class="ad-block">
+          <div class="ad-title">【サイドバー広告①】</div>
+          <div class="ad-note">楽天やAmazonの「縦長バナー」「レコメンドウィジェット」などをここに。</div>
+          <!-- ▼▼▼ サイドバー広告コード貼り付け欄 ▼▼▼ -->
+          <!-- ▲▲▲ ここまで ▲▲▲ -->
+        </div>
+
+        <div class="ad-block">
+          <div class="ad-title">【サイドバー広告②】</div>
+          <div class="ad-note">「おすすめ本」「おすすめ健康食品」などのリンクをまとめてもOK。</div>
+          <!-- ▼▼▼ ここにも別の広告コードを貼付可 ▼▼▼ -->
+          <!-- ▲▲▲ ここまで ▲▲▲ -->
+        </div>
+      </aside>
+    </div>
+  </div>
+
+  <footer>
+    &copy; 2025 津軽俳句プログ（見本）｜Hosted on GitHub Pages
+  </footer>
+</body>
+</html>
+　
