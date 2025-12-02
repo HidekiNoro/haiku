@@ -2,28 +2,21 @@ const haikuList = document.getElementById("haiku-list");
 const toggleDeleteBtn = document.getElementById("toggle-delete-btn");
 let showDeleteButtons = false;
 
-// アクセスカウンターを更新する関数
-async function updateCounter() {
-    try {
-        // CountAPI のエンドポイントにリクエストを送信
-        const response = await fetch('https://api.countapi.xyz/hit/hidekinoro.github.io/haiku');
-        const data = await response.json();
-        // カウンターの値を表示
-        document.getElementById('access-count').innerText = `アクセス数: ${data.value}`;
-    } catch (error) {
-        console.error('カウンターの取得に失敗しました:', error);
-        document.getElementById('access-count').innerText = `アクセス数: 取得失敗`;
-    }
-}
-
-// ページ読み込み時に保存された俳句を表示し、アクセスカウンターを更新
+// ページ読み込み時：俳句を表示 ＋ アクセス数を更新
 window.addEventListener("load", function () {
-    // 俳句の表示
+    // ① ローカルストレージから俳句を読み込んで表示
     const savedHaikus = JSON.parse(localStorage.getItem("haikus")) || [];
     savedHaikus.forEach(({ text, author, date }) => addHaikuToList(text, author, date));
 
-    // アクセスカウンターの更新
-    updateCounter();
+    // ② アクセスカウンター（この端末だけ）
+    const countElem = document.getElementById("access-count");
+    if (countElem) {
+        const key = "haiku-access-count";
+        let n = Number(localStorage.getItem(key) || "0");
+        n += 1;
+        localStorage.setItem(key, n);
+        countElem.textContent = `この端末からのアクセス数: ${n}`;
+    }
 });
 
 // 俳句を追加する
@@ -104,3 +97,4 @@ function likeHaiku(button) {
     const currentLikes = parseInt(span.textContent, 10);
     span.textContent = currentLikes + 1;
 }
+
