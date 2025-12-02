@@ -191,6 +191,22 @@ ul {
         font-size: 12px;
         padding: 6px 10px;
     }
+    /* サイド広告（PC向け固定表示） */
+.side-ad {
+    position: fixed;
+    right: 20px;      /* 右端から20px */
+    top: 160px;       /* 上からの距離。好みで調整OK */
+    width: 280px;     /* 貼り付けた楽天コードの幅に合わせる */
+    z-index: 900;
+}
+
+/* スマホでは邪魔なので非表示 */
+@media (max-width: 960px) {
+    .side-ad {
+        display: none;
+    }
+}
+
 }
 
 
