@@ -171,18 +171,13 @@ ul {
 
 /* アクセスカウンターのスタイル */
 #access-count {
-    position: fixed;
-    bottom: 20px;
-    left: 20px;
-    background-color: rgba(0, 0, 0, 0.6);
-    color: #fff;
-    padding: 8px 12px;
-    border-radius: 5px;
-    font-size: 14px;
-    z-index: 1000;
-    opacity: 0.8;
-    transition: opacity 0.3s;
+    position: static;          /* 左下固定をやめる */
+    text-align: center;        /* 文字を中央寄せ */
+    margin: 10px auto 30px;    /* 上下の余白 */
+    background: transparent;   /* 灰色の背景を消す（好みで） */
+    color: #333;
 }
+
 
 #access-count:hover {
     opacity: 1;
